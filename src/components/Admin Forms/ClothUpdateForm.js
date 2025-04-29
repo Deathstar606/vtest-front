@@ -38,7 +38,6 @@ const uploadToCloudinary = async (file, clothName) => {
 };
 
 export default function ClothesForm({category}) {
-  console.log(category)
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     category: '',
