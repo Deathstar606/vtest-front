@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/vtest-front/static/css/main.e814a2dd.css",
+    "main.js": "/vtest-front/static/js/main.8739d92c.js",
+    "static/js/787.856d341b.chunk.js": "/vtest-front/static/js/787.856d341b.chunk.js",
+    "static/media/demo.mp4": "/vtest-front/static/media/demo.7f8b711a542aa1086511.mp4",
+    "static/media/about.jpg": "/vtest-front/static/media/about.d8946a39d3b0d01d83f8.jpg",
+    "static/media/about_real.jpg": "/vtest-front/static/media/about_real.c1d3f71b14d317bf3b83.jpg",
+    "static/media/kyle-loftus-6TIoPIpMvLc-unsplash.jpg": "/vtest-front/static/media/kyle-loftus-6TIoPIpMvLc-unsplash.61a9e65df2f0dc8afd9a.jpg",
+    "static/media/veloura.png": "/vtest-front/static/media/veloura.4cc31dad649754a68037.png",
+    "static/media/sunglass.png": "/vtest-front/static/media/sunglass.d2aa228aea456ebaa596.png",
+    "static/media/WhatsApp Image 2025-04-26 at 3.27.54 AM.jpeg": "/vtest-front/static/media/WhatsApp Image 2025-04-26 at 3.27.54 AM.c73f88ad3d7d1cdc870e.jpeg",
+    "static/media/unnamed.jpg": "/vtest-front/static/media/unnamed.28441370c40fc1740009.jpg",
+    "static/media/visa-logo-300x300.png": "/vtest-front/static/media/visa-logo-300x300.d10e6f10459277368a4f.png",
+    "index.html": "/vtest-front/index.html",
+    "main.e814a2dd.css.map": "/vtest-front/static/css/main.e814a2dd.css.map",
+    "main.8739d92c.js.map": "/vtest-front/static/js/main.8739d92c.js.map",
+    "787.856d341b.chunk.js.map": "/vtest-front/static/js/787.856d341b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e814a2dd.css",
+    "static/js/main.8739d92c.js"
+  ]
+}
