@@ -58,7 +58,7 @@ function Order (props) {
         setFormData((prevData) => ({
           ...prevData,
           firstName: parsedData.firstName || '',
-          lastName: parsedData.lastName || '',
+/*           lastName: parsedData.lastName || '', */
           phoneNumber: parsedData.phoneNumber || '',
           address: parsedData.address || '',
           email: parsedData.email || '',
@@ -91,7 +91,7 @@ function Order (props) {
       };
 
       if (formData.firstName == "") return alert("Please type your first name");
-      if (formData.lastName == "") return alert("Please type your last name");
+      //if (formData.lastName == "") return alert("Please type your last name");
       if (formData.phoneNumber == "") return alert("Please type your phone number");
       if (formData.address == "") return alert("Please type your address");
       if (formData.email == "") return alert("Please enter a valid email address");
