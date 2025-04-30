@@ -39,7 +39,7 @@ useEffect(() => {
 }, [location]);
 
   return (
-    <div>
+    <div style={{overflowY: "auto"}}>
       <div className="burger-menu">
         <div className="burger-icon" onClick={toggleMenu}>
           <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
@@ -47,9 +47,9 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className={`menu pt-5 ${menuOpen ? 'open' : ''}`} style={{overflowY: "auto"}}>
+      <div className={`menu ${menuOpen ? 'open' : ''}`}>
         <ul>
-          <div className='d-flex justify-content-center p-1'>
+          <div className='d-flex justify-content-center'>
             <li>
               <NavItem
                 onClick={toggleMen}
@@ -151,6 +151,13 @@ useEffect(() => {
                     </motion.div>
                   )}
                 </AnimatePresence>
+              </NavItem>
+              <NavItem>
+                <Link to="/home/aboutus" onClick={toggleMenu}> 
+                  <div className={`burg-menu pr-2 pl-2 text-center ${activeLink === '/menu' ? 'active' : ''}`}>
+                    About Us
+                  </div>
+                </Link>
               </NavItem>
             </li>
           </div>

@@ -54,12 +54,12 @@ export const OrderBar = (props) => {
                 props.orders.orders.map((order, index) => (
                   <React.Fragment key={index}>
                     <Row style={{ marginBottom: '5px' }}>
-                      <Col md={5} className="mx-0">
+                      <Col md={4} className="mx-0">
                         <RouterLink to={`/home/${order.category}/${order._id}`}>                      
                           <CardImg onClick={props.handleOrdPage} className='mb-4' style={{cursor: "pointer"}} src={order.image} alt={order.name} />
                         </RouterLink>
                       </Col>
-                      <Col md={7}>
+                      <Col md={8}>
                         <strong>{order.name}<br /></strong>
                         <pr>Size <strong>{order.size}<br /></strong></pr>
                         <pr>Quantity: <strong>{order.quantity}<br /></strong></pr>
@@ -93,15 +93,17 @@ export const OrderBar = (props) => {
                 </>
               )}
             </ul>
-          </div>
-          {props.orders.orders.length > 0 && (
-            <div className='p-3'>
-              <div className='ml-3 mb-2 ml-2'>Total: {total} Tk </div>
-              <RouterLink to="home/orders">
-                <button onClick={props.handleOrdPage} className='butt ml-3'>Checkout</button>
-              </RouterLink>
+            {props.orders.orders.length > 0 && (
+            <div className='pt-1' style={{borderTop: "1px solid black", display: "flex", justifyContent: "center"}}>
+              <div>
+                <div className='mt-1 ml-3 mb-2 ml-2 text-center'>Total: {total} Tk </div>
+                <RouterLink to="home/orders">
+                  <button onClick={props.handleOrdPage} className='butt ml-3'>Checkout</button>
+                </RouterLink>
+              </div>
             </div>
           )}
+          </div>
         </motion.div>
       </motion.div>
     );

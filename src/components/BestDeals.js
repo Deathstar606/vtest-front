@@ -5,7 +5,6 @@ import { Product } from "./Card";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from 'swiper/modules';
 import MediaQuery from "react-responsive";
 import { Loading } from "./LoadingComponent";
 import "./card.css";
@@ -48,9 +47,7 @@ function BestD(props) {
                         <Swiper
                             slidesPerView={1.5}
                             spaceBetween={15}
-                            autoplay={{ delay: 3000, disableOnInteraction: false }}
                             navigation={true}
-                            modules={[Autoplay]}
                         >
                             {products}
                         </Swiper>

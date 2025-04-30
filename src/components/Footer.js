@@ -16,6 +16,7 @@ function Footer() {
     <>
     <div
       style={{
+        /* borderTop: "2px solid rgba(199, 198, 197, 0.13)", */
         background: "linear-gradient(to top, #b6b4ae, white)",
         padding: "5% 0",
       }}

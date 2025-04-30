@@ -49,7 +49,7 @@ const Deats = (props) => {
             return    
         }
 
-        if (!isNaN(val) && val > 0 && val <= maxQuantity) {
+        if (!isNaN(val) && val >= 0 && val <= maxQuantity) {
             setQuantity(val);
         }
     };
@@ -64,6 +64,12 @@ const Deats = (props) => {
 
     const handleSizeChange = (size) => {
         setSelectedSize(size);
+        if (props.deats.size[size] > 0) {
+            setQuantity(1);
+        }
+        else {
+            setQuantity(0);
+        }
     };
 
     useEffect(() => {
@@ -99,7 +105,8 @@ const Deats = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (selectedSize == "") return alert("Please select a size") 
+        if (selectedSize == "") return alert("Please select a size")
+        if (quantity == 0) return alert("This Size is out of stock")
         props.addNewOrder(
             {
                 cart_id: Math.floor(100000 + Math.random() * 900000),
@@ -307,31 +314,25 @@ const Deats = (props) => {
                                     Stock remaining: {props.deats.size[selectedSize]}
                                 </div>
                             )}
-                            <h5 className='mt-3'>Quantity</h5>
-                            <div className="d-flex align-items-center mt-1 mb-3">
-                                <Button
-                                    outline
-                                    onClick={() => updateQuantity(quantity - 1)}
-                                >
-                                    −
-                                </Button>
-                                <input
-                                    type="text"
-                                    className="form-control text-center mx-2"
-                                    value={quantity}
-                                    onChange={(e) => {
-                                        const val = parseInt(e.target.value, 10);
-                                        updateQuantity(val);
-                                    }}
-                                    style={{ width: '40px', border: "2px solid rgb(255, 153, 0)" }}
-                                />
-                                <Button
-                                    outline
-                                    onClick={() => updateQuantity(quantity + 1)}
-                                >
-                                    +
-                                </Button>
-                            </div>
+                            {selectedSize && props.deats.size[selectedSize] > 0 && (
+                                <>
+                                    <h5 className='mt-3'>Quantity</h5>
+                                    <div className="d-flex align-items-center mt-1 mb-3">
+                                        <Button outline onClick={() => updateQuantity(quantity - 1)}>−</Button>
+                                        <input
+                                            type="text"
+                                            className="form-control text-center mx-2"
+                                            value={quantity}
+                                            onChange={(e) => {
+                                                const val = parseInt(e.target.value, 10);
+                                                updateQuantity(val);
+                                            }}
+                                            style={{ width: '40px', border: "2px solid rgb(255, 153, 0)" }}
+                                        />
+                                        <Button outline onClick={() => updateQuantity(quantity + 1)}>+</Button>
+                                    </div>
+                                </>
+                            )}
                             <div className="mt-3 w-100">
                                 <button onClick={handleSubmit} className='butt'>Bag it<span className='ml-1' style={{color: "rgb(255, 153, 0)"}}>!!</span></button>
                             </div>

@@ -254,7 +254,7 @@ function Order (props) {
                           />
                       </FormGroup>
                     </Form>
-                    <h2 className='text-center mt-4'>Select Shipping mbethod</h2>
+                    <h2 className='text-center mt-4'>Select Shipping method</h2>
                     <div>
                       <div
                         className='text-center mt-4'
@@ -317,7 +317,7 @@ function Order (props) {
                     {props.orders.length > 0 ? (
                       props.orders.map((order, index) => (
                         <React.Fragment key={index}>
-                          <Row style={{ marginBottom: '20px' }}>
+                          <Row>
                             <Col md={4} className="mx-0">
                               <CardImg className='mb-4' src={order.image} alt={order.name} />
                             </Col>
@@ -343,7 +343,7 @@ function Order (props) {
                               <strong>Price:</strong> {order.price * order.quantity} Tk<br />
                             </Col>
                           </Row>
-                          <div className='pb-2' style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                          <div className='pb-4 pt-3' style={{ display: 'flex', justifyContent: 'flex-end' }}>
                             <button className='butt' outline onClick={() => props.removeExistingOrder(order.cart_id)}>Remove</button>
                           </div>
                         </React.Fragment>
@@ -352,7 +352,7 @@ function Order (props) {
                       <h3 className='text-center'>No items in cart</h3>
                     )}
                   </ul>
-                  <FormGroup style={{width: "50%"}} className="d-flex align-items-center pb-2">
+                  <FormGroup style={{width: "75%"}} className="d-flex align-items-center pb-2">
                     <Label for="voucher" className="mb-0 mr-2">Voucher</Label>
                     <Input
                       type="text"
@@ -360,11 +360,11 @@ function Order (props) {
                       name="voucher"
 /*                       value={voucher}
                       onChange={handleVoucherChange} */
-                      placeholder="Enter voucher code"
+                      placeholder="Enter voucher"
                     />
                   </FormGroup>
                   <h4><strong>Total:</strong> {total} Tk</h4>
-                  <div className='d-flex'>
+                  <div className="d-flex flex-wrap align-items-center">
                     <FormGroup check className="mr-2">
                       <Label check>
                         <Input
