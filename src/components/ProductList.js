@@ -13,7 +13,6 @@ import { AnimatePresence, motion, useInView } from 'framer-motion';
 import { Range } from 'react-range';
 
 const ProductList = (props) => {
-
     const [criteria, setCriteria] = useState("");
     const ChangeCriteria = (e) => {
         setCriteria(e);
@@ -33,7 +32,7 @@ const ProductList = (props) => {
     const isInview = useInView(ref)
 
     const [selectedPriceRance, setPriceRance] = useState({
-        priceRange: [0, 100],  // Default range
+        priceRange: [0, 2500],  // Default range
     });
 
     const handlePriceChange = (values) => {
@@ -44,7 +43,6 @@ const ProductList = (props) => {
     };
 
     if (props.products) {
-        
         const filteredClothes = props.products
         .filter(cloth => {
           return (
@@ -108,7 +106,7 @@ const ProductList = (props) => {
                                                 values={selectedPriceRance.priceRange}
                                                 step={1}
                                                 min={0}
-                                                max={100}
+                                                max={2500}
                                                 onChange={handlePriceChange}
                                                 renderTrack={({ props, children }) => (
                                                     <div

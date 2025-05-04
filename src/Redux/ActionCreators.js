@@ -61,7 +61,7 @@ export const fetchProdReq = () => (dispatch) => {
     })
     .then(clothes => dispatch(addProdreq(clothes)))
     .catch(error => dispatch(prodreqFailed(error.message)));
-  }
+}
 
 export const prodreqLoading = () => ({
     type: ActionTypes.PRODREQ_LOADING
@@ -101,8 +101,6 @@ export const fetchOrders = () => (dispatch) => {
     }
 };
 
-
-
 export const addNewOrder = (order) => (dispatch) => {
     try {
         const ordersFromStorage = JSON.parse(localStorage.getItem('Velorders')) || [];
@@ -124,6 +122,42 @@ export const removeExistingOrder = (order_id) => (dispatch) => {
         dispatch(orderFailed(error.message));
     }
 };
+
+export const fetchVouchers = () => (dispatch) => {
+    dispatch(voucherLoading(true));
+    const token = localStorage.getItem("token"); // Retrieve token from localStorage
+
+    return fetch(baseUrl + "voucher", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `bearer ${token}` // Attach token here
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+    })
+    .then(clothes => dispatch(addvoucher(clothes)))
+    .catch(error => dispatch(voucherFailed(error.message)));
+}
+
+export const voucherLoading = () => ({
+    type: ActionTypes.VOUCHER_LOADING
+});
+  
+export const voucherFailed = (errmess) => ({
+    type: ActionTypes.VOUCHER_FAILED,
+    payload: errmess
+});
+  
+export const addvoucher = (cloth) => ({
+    type: ActionTypes.ADD_VOUCHERS,
+    payload: cloth
+});
 
 export const requestLogin = (creds) => {
     return {

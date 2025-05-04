@@ -20,7 +20,7 @@ import Cancle from './PaymentStats/Cancle';
 
 import { Link, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchCloth, fetchOrders, fetchProdReq, addNewOrder, removeExistingOrder, toggleCartPanel, loginUser, logoutUser } from '../Redux/ActionCreators';
+import { fetchCloth, fetchOrders, fetchProdReq, fetchVouchers, addNewOrder, removeExistingOrder, toggleCartPanel, loginUser, logoutUser } from '../Redux/ActionCreators';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Loading } from './LoadingComponent';
 import List from './ProductList';
@@ -35,6 +35,7 @@ const mapStateToProps = (state) => {
     isOpen: state.cartPanel.isOpen,
     orders: state.orders,
     prodreq: state.prodreq,
+    vouchers: state.vouchers
     //cart: state.cart
   }
 }
@@ -43,6 +44,7 @@ const mapDispatchToProps = (dispatch) => ({    //method defination
   fetchCloth: () => {dispatch(fetchCloth())},
   fetchOrders: () => {dispatch(fetchOrders())},
   fetchProdReq: () => {dispatch(fetchProdReq())},
+  fetchVouchers: () => {dispatch(fetchVouchers())},
   addNewOrder: (order) => {dispatch(addNewOrder(order))},
   removeExistingOrder: (order_id) => {dispatch(removeExistingOrder(order_id))},
   toggleCartPanel: () => {dispatch(toggleCartPanel())},
@@ -94,7 +96,7 @@ const Polo = ({ clothes }) => {
   const colthList = clothes
     .filter(cloth => cloth.category === "polo")
     .flatMap(cloth => cloth.items);
-
+  console.log(colthList)
   return (
     <ProdList category="polo" products={colthList} />
   );
@@ -130,6 +132,7 @@ const Main = (props) => {
     props.fetchProdReq();
     props.fetchOrders();
     props.fetchCloth();
+    props.fetchVouchers();
   }, []);
 
 /*   const [ordPage, setOrdpage] = useState(false);
@@ -167,7 +170,7 @@ const Main = (props) => {
             <Route path="/home/fshirt" element={<FullShirt clothes={props.clothes.clothes} />} />
             <Route path="/home/aboutus" element={<About />} />
             <Route path="/home/orders" element={<Order orders={props.orders.orders} removeExistingOrder={props.removeExistingOrder}/>} />
-            <Route path="/home/admin" element={<AdminPanel auth={props.auth} clothes={props.clothes.clothes} prodreq={props.prodreq.prodreq} loginUser={props.loginUser} logoutUser={props.logoutUser}/>} />
+            <Route path="/home/admin" element={<AdminPanel auth={props.auth} clothes={props.clothes.clothes} prodreq={props.prodreq.prodreq} vouchers={props.vouchers.vouchers} loginUser={props.loginUser} logoutUser={props.logoutUser}/>} />
             <Route path="/home/paystat/:tranId" element={<Success />} />
             <Route path="/home/failure/:tranId" element={<Fail />} />
             <Route path="/home/cancle/:tranId" element={<Cancle />} />

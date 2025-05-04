@@ -28,6 +28,10 @@ body {
 }
 
 .butt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;           /* 👈 This makes width wrap around the text */
   border: 2px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
   background: none;
@@ -38,6 +42,7 @@ body {
   transition: 0.8s;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .butt:hover {
@@ -180,6 +185,23 @@ body {
 
 .criteria-option.selected:hover {
   border-bottom: none
+}
+
+.voucher {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 639px) {
+  .voucher {
+    display: block; /* or remove display: flex; */
+  }
+}
+
+@media (max-width: 638px) {
+  .voucherInp {
+    margin-bottom: 0.5rem; /* or remove display: flex; */
+  }
 }
 
 /*End Here*/

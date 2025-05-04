@@ -2,6 +2,7 @@ import { legacy_createStore as createStore, combineReducers, applyMiddleware } f
 import { Auth } from './auth';
 import { Orders } from './orders';
 import { Clothes } from './clothes';
+import { Vouchers } from './voucher';
 import { ProdReq } from './prodreq';
 import { cartPanel } from './cartPanel';
 import thunk from 'redux-thunk';
@@ -13,6 +14,7 @@ export const ConfigStore = () => {            //used in app.js
             auth: Auth,
             clothes: Clothes,
             orders: Orders,
+            vouchers: Vouchers,
             prodreq: ProdReq,
             cartPanel: cartPanel,
 /*             promotions: Promotions,

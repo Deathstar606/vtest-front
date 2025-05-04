@@ -280,7 +280,7 @@ const Deats = (props) => {
                                     <div
                                         key={index}
                                         className="color-box"
-                                        style={{ backgroundColor: col, width: '25px', height: '25px', marginRight: '10px', borderRadius: '50%' }}
+                                        style={{ backgroundColor: col, width: '25px', height: '25px', marginRight: '10px',  marginBottom: "10px", borderRadius: '50%' }}
                                         onClick={() => handleChange(col)} // Add logic for color selection if needed
                                     />
                                 ))}

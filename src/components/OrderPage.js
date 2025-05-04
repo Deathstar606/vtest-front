@@ -9,6 +9,7 @@ import {
   Col,
   CardImg,
   Container,
+  Alert
 } from 'reactstrap';
 import { Breadcrumb } from './BreadCrumb';
 import axios from 'axios';
@@ -28,6 +29,20 @@ function Order (props) {
   const [paymentMethod, setPaymentMethod] = useState('online');
   const [deliveryZone, setDeliveryZone] = useState(null);
 
+  const [voucher, setVoucher] = useState('');
+  const [discount, setDiscount] = useState(0);
+  const [voucherApplied, setVoucherApplied] = useState(false);
+  const [error, setError] = useState('');
+
+  const finalTotal = total - discount;
+
+  const handleVoucherChange = (e) => {
+    setVoucher(e.target.value);
+    setError('');
+    setVoucherApplied(false);
+    setDiscount(0);
+  };
+
   const handlePaymentChange = (e) => {
     setPaymentMethod(e.target.value);
   };
@@ -42,7 +57,7 @@ function Order (props) {
       phoneNumber: '',
       address: '',
       email: '',
-      total: 0,
+      total: finalTotal,
       items: []
     });
   
@@ -81,6 +96,22 @@ function Order (props) {
       });
     };
 
+    const submitVoucher = async () => {
+      try {
+        const response = await axios.post(`${baseUrl}voucher`, { name: voucher });
+        console.log(response)
+        const value = response.data.value; // Assuming 'value' is a percentage like 10
+  
+        setDiscount((total * value) / 100);
+        setVoucherApplied(true);
+        setError('');
+      } catch (err) {
+        setVoucherApplied(false);
+        setDiscount(0);
+        setError('Invalid or expired voucher.');
+      }
+    };
+
     const handleSubmit = async (e) => {
       e.preventDefault(); // prevent default form behavior
       localStorage.setItem('VelouraFormData', JSON.stringify(formData));
@@ -98,8 +129,7 @@ function Order (props) {
       if (formData.total == 0) return alert("Please add items to your cart first");
 
       try {
-        console.log("Form Data:", formData);
-        
+
         const response = await axios.post(baseUrl + 'orders', orderToSubmit, {
           headers: {
             'Content-Type': 'application/json'
@@ -352,18 +382,40 @@ function Order (props) {
                       <h3 className='text-center'>No items in cart</h3>
                     )}
                   </ul>
-                  <FormGroup style={{width: "75%"}} className="d-flex align-items-center pb-2">
-                    <Label for="voucher" className="mb-0 mr-2">Voucher</Label>
-                    <Input
-                      type="text"
-                      id="voucher"
-                      name="voucher"
-/*                       value={voucher}
-                      onChange={handleVoucherChange} */
-                      placeholder="Enter voucher"
-                    />
-                  </FormGroup>
-                  <h4><strong>Total:</strong> {total} Tk</h4>
+                  <div>
+                    <FormGroup style={{ width: "75%" }} className="pb-2">
+                      <Label for="voucher" className="mb-1">Voucher</Label>
+                      <div className="voucher">
+                        <Input
+                          type="text"
+                          id="voucher"
+                          name="voucher"
+                          value={voucher}
+                          onChange={handleVoucherChange}
+                          placeholder="Enter voucher"
+                          className="flex-grow-1 mr-2 voucherInp"
+                        />
+                        <div className="butt" onClick={submitVoucher}>
+                          Apply
+                        </div>
+                      </div>
+                    </FormGroup>
+                    <h4>
+                      <strong>Total:</strong> {finalTotal.toFixed(2)} Tk
+                    </h4>
+
+                    {voucherApplied && (
+                      <Alert color="success" className="mt-2">
+                        Voucher applied successfully! You saved {discount.toFixed(2)} Tk.
+                      </Alert>
+                    )}
+
+                    {error && (
+                      <Alert color="danger" className="mt-2">
+                        {error}
+                      </Alert>
+                    )}
+                  </div>
                   <div className="d-flex flex-wrap align-items-center">
                     <FormGroup check className="mr-2">
                       <Label check>

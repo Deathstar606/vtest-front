@@ -52,7 +52,7 @@ export const Product = ({ category, child }) => {
             <div className="p-2 pt-2 d-flex justify-content-center text-center">
                 <div>
   
-                    <h5 style={{whiteSpace: 'nowrap'}} className="mb-2 mt-2">{child.name}</h5>
+                    <h5 /* style={{whiteSpace: 'nowrap'}} */ className="mb-2 mt-2">{child.name}</h5>
 
                     <div className="color-options d-flex justify-content-center mb-2">
                     {child.color.map((col, index) => (
@@ -64,6 +64,7 @@ export const Product = ({ category, child }) => {
                             width: '17px',
                             height: '17px',
                             marginRight: '8px',
+                            marginBottom: "5px",
                             borderRadius: '50%',
                             cursor: 'pointer'
                         }}

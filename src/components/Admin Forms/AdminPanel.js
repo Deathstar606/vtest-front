@@ -32,6 +32,84 @@ const BestList = ({ clothes }) => {
   );
 };
 
+const VoucherList = ({ vouchers }) => {
+  const [newVoucherName, setNewVoucherName] = useState('');
+  const [newVoucherValue, setNewVoucherValue] = useState('');
+
+  const handleDelete = async (name) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.post(`${baseUrl}voucher/remove`, { name }, {
+        headers: {
+          Authorization: `bearer ${token}`
+        }
+      });
+    } catch (error) {
+      console.error('Failed to delete voucher:', error);
+    }
+  };
+
+  const handleAdd = async () => {
+    if (!newVoucherName || !newVoucherValue) return;
+    const token = localStorage.getItem("token");
+    try {
+      await axios.post(`${baseUrl}voucher/add`, {
+        name: newVoucherName,
+        value: newVoucherValue
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setNewVoucherName('');
+      setNewVoucherValue('');
+    } catch (error) {
+      console.error('Failed to add voucher:', error);
+    }
+  };
+
+  return (
+    <>
+      <Col md={12}>
+        {vouchers.map((voucher, idx) => (
+          <Col md="4" key={idx} className="mb-4">
+            <div className="p-3 border rounded">
+              <h5>Name: {voucher.name}</h5>
+              <p>Value: {voucher.value}%</p>
+              <Button color="danger" onClick={() => handleDelete(voucher.name)}>
+                Delete
+              </Button>
+            </div>
+          </Col>
+        ))}
+      </Col>
+
+      <div className="mt-4 p-4">
+        <h5>Add New Voucher</h5>
+        <FormGroup className="d-flex flex-column flex-md-row align-items-stretch gap-2 mt-2">
+          <Input
+            className="mt-2"
+            type="text"
+            placeholder="Voucher name"
+            value={newVoucherName}
+            onChange={(e) => setNewVoucherName(e.target.value)}
+          />
+          <Input
+            className="mr-2 mt-2"
+            type="number"
+            placeholder="Value (%)"
+            value={newVoucherValue}
+            onChange={(e) => setNewVoucherValue(e.target.value)}
+          />
+          <div className="butt mt-2" onClick={handleAdd}>
+            Add
+          </div>
+        </FormGroup>
+      </div>
+    </>
+  );
+};
+
 const CategoriesList = ({ data }) => {
   const handleDelete = async (category, id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this product?");
@@ -489,6 +567,13 @@ function AdminPanel(props) {
                                 >
                                   Inventory
                                 </button>
+                                <button
+                                  className="mb-2 butt"
+                                  style={{ backgroundColor: admin === 'vouchers' ? 'orange' : '' }}
+                                  onClick={() => ChangeAdminPanel('vouchers')}
+                                >
+                                  Vouchers
+                                </button>
                               </div>
                           </Col>
 
@@ -540,6 +625,11 @@ function AdminPanel(props) {
                                 </Col>
                                 <BestList clothes={props.clothes} />
                                 <CategoriesList data={props.clothes} />
+                              </Row>                             
+                            }
+                            {admin === 'vouchers' &&
+                              <Row>
+                                <VoucherList vouchers={props.vouchers}/>
                               </Row>                             
                             }
                           </Col>
