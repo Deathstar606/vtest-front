@@ -84,10 +84,10 @@ function Order (props) {
     useEffect(() => {
       setFormData((prevData) => ({
         ...prevData,
-        total: total,
+        total: finalTotal,
         items: props.orders,
       }));
-    }, [total, props.orders]);
+    }, [finalTotal, props.orders]);
 
     const handleChange = (e) => {
       setFormData({
@@ -113,7 +113,7 @@ function Order (props) {
     };
 
     const handleSubmit = async (e) => {
-      e.preventDefault(); // prevent default form behavior
+      e.preventDefault(); 
       localStorage.setItem('VelouraFormData', JSON.stringify(formData));
       
       const orderToSubmit = {
@@ -126,7 +126,7 @@ function Order (props) {
       if (formData.phoneNumber == "") return alert("Please type your phone number");
       if (formData.address == "") return alert("Please type your address");
       if (formData.email == "") return alert("Please enter a valid email address");
-      if (formData.total == 0) return alert("Please add items to your cart first");
+      if (formData.total == 0 || formData.total < 0) return alert("Please add items to your cart first");
 
       try {
 
