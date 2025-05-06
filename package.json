@@ -2,7 +2,7 @@
     "name": "veloura",
     "version": "0.1.0",
     "private": true,
-    "homepage": "http://Deathstar606.github.io/vtest-front",
+    
     "dependencies": {
         "@popperjs/core": "^2.11.6",
         "@testing-library/jest-dom": "^5.16.5",
