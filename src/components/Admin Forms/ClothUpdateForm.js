@@ -53,6 +53,8 @@ export default function ClothesForm({category}) {
       }
     ]
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleToggle = () => setShowForm(!showForm);
 
@@ -118,10 +120,12 @@ export default function ClothesForm({category}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setLoading(true); // show loading state
   
     const validateForm = () => {
       if (!formData.name?.trim()) return "Please enter a clothing name.";
-      if (formData.description == "") return "Please add some description.";
+      if (formData.description === "") return "Please add some description.";
       if (!formData.category?.trim()) return "Please select or enter a category.";
       if (!formData.price || isNaN(formData.price) || parseFloat(formData.price) <= 0) {
         return "Please enter a valid price greater than 0.";
@@ -135,6 +139,7 @@ export default function ClothesForm({category}) {
     const errorMessage = validateForm();
     if (errorMessage) {
       alert(errorMessage);
+      setLoading(false);
       return;
     }
   
@@ -159,9 +164,10 @@ export default function ClothesForm({category}) {
           imageUploadResults[color] = validImages;
         }
       }
-
+  
       if (Object.keys(imageUploadResults).length === 0) {
         alert("Please upload at least one image.");
+        setLoading(false);
         return;
       }
   
@@ -180,20 +186,28 @@ export default function ClothesForm({category}) {
           }
         ]
       };
-      console.log("Payload to be sent:", payload);
+  
       const token = localStorage.getItem("token");
-
+  
       const response = await axios.post(baseUrl + "clothes", payload, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
         },
       });
+  
       alert(response.data.message);
     } catch (error) {
       console.error("Error:", error.response ? error.response.data : error);
+      if (error.response?.status === 401) {
+        setError("You are not authorized. Please log in again.");
+      } else {
+        setError("An error occurred. Please try again.");
+      }
+    } finally {
+      setLoading(false);
     }
-  };  
+  };
   
   return (
     <div className="p-3">
@@ -339,9 +353,11 @@ export default function ClothesForm({category}) {
             <Button outline color='secondary' onClick={addColorBlock}>Add Color</Button>
           </FormGroup>
   
-          <div onClick={handleSubmit} className="butt" style={{display: 'inline-block', cursor: 'pointer'}}>
+          <div disabled={loading} onClick={handleSubmit} className="butt" style={{display: 'inline-block', cursor: 'pointer'}}>
             Submit
           </div>
+          {loading && <p>Please wait, uploading and saving your item...</p>}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </Form>
       )}
     </div>

@@ -11,6 +11,7 @@ import {
   Container,
   Alert
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import { Breadcrumb } from './BreadCrumb';
 import axios from 'axios';
 import { baseUrl } from '../Redux/shared/baseurl';
@@ -34,7 +35,16 @@ function Order (props) {
   const [voucherApplied, setVoucherApplied] = useState(false);
   const [error, setError] = useState('');
 
+  const [agreeTerm, setagreeTerm] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+  const [payerror, setPayerror] = useState("");
+
   const finalTotal = total - discount;
+
+  const handleChangeTerm = (e) => {
+    setagreeTerm(!agreeTerm)
+  };
 
   const handleVoucherChange = (e) => {
     setVoucher(e.target.value);
@@ -114,40 +124,62 @@ function Order (props) {
 
     const handleSubmit = async (e) => {
       e.preventDefault(); 
+      setError("");
+      setLoading(true);
+    
       localStorage.setItem('VelouraFormData', JSON.stringify(formData));
-      
+    
       const orderToSubmit = {
         ...formData,
-        order_stat: paymentMethod // Add it here
+        order_stat: paymentMethod
       };
-
-      if (formData.firstName == "") return alert("Please type your first name");
-      //if (formData.lastName == "") return alert("Please type your last name");
-      if (formData.phoneNumber == "") return alert("Please type your phone number");
-      if (formData.address == "") return alert("Please type your address");
-      if (formData.email == "") return alert("Please enter a valid email address");
-      if (formData.total == 0 || formData.total < 0) return alert("Please add items to your cart first");
-
+    
+      if (formData.firstName === "") {
+        setLoading(false);
+        return alert("Please type your first name");
+      }
+      if (formData.phoneNumber === "") {
+        setLoading(false);
+        return alert("Please type your phone number");
+      }
+      if (formData.address === "") {
+        setLoading(false);
+        return alert("Please type your address");
+      }
+      if (formData.email === "") {
+        setLoading(false);
+        return alert("Please enter a valid email address");
+      }
+      if (formData.total <= 0) {
+        setLoading(false);
+        return alert("Please add items to your cart first");
+      }
+      if (!agreeTerm) {
+        setLoading(false);
+        return alert("You must agree to terms and conditions");
+      }
+    
       try {
-
         const response = await axios.post(baseUrl + 'orders', orderToSubmit, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
+    
         window.open(response.data.url);
-        
       } catch (error) {
         if (error.response) {
-          // Server responded with a status other than 2xx
           console.error("Error response:", error.response.data);
+          setError(error.response.data.message || "Something went wrong.");
         } else if (error.request) {
-          // No response from server
           console.error("No response received:", error.request);
+          setError("No response from server.");
         } else {
-          // Other error
           console.error("Error submitting order:", error.message);
+          setError(error.message);
         }
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -311,6 +343,7 @@ function Order (props) {
                             Selected
                           </div>
                         )}
+                        <p className='text-center pt-1 text-muted'>Delivery Time 5 days</p>
                       </div>
 
                       <div
@@ -338,6 +371,7 @@ function Order (props) {
                             Selected
                           </div>
                         )}
+                        <p className='text-center pt-1 text-muted'>Delivery Time 1 day</p>
                       </div>
                     </div>
                   </Col>
@@ -441,14 +475,29 @@ function Order (props) {
                         Online Payment
                       </Label>
                     </FormGroup>
+                      <Label className='mt-2'>
+                        <input
+                          className='mr-2'
+                          type="checkbox"
+                          checked={agreeTerm}
+                          onChange={handleChangeTerm}
+                        />
+                        I agree to the&nbsp;
+                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/terms" target="_blank">Terms & Conditions</Link>,&nbsp;
+                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/privacy-policy" target="_blank">Privacy Policy</Link>, and&nbsp;
+                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/return-policy" target="_blank">Return & Refund Policy</Link>.
+                      </Label>
                   </div>
                   <div className='pt-3 home-butt'>
                     <button
                       className='butt'
+                      disabled={loading}
                       onClick={handleSubmit}
                     >
                       Confirm Order
                     </button>
+                    {loading && <p className='pt-2'>Please wait while we process your order...</p>}
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
                   </div>
                   <h5 className='pt-4 pb-1'>Pay with</h5>
                   <img style={{maxWidth: "150px"}} src={pp}/>

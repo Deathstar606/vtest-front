@@ -6,6 +6,7 @@ import ng from "../images/Pay logo/images.png"
 import visa from "../images/Pay logo/visa-logo-300x300.png"
 import master from "../images/Pay logo/unnamed.jpg"
 import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const paymentIcons = [  
   visa, visa, visa, visa, visa, visa
@@ -32,12 +33,13 @@ function Footer() {
           </Col>
           <Col md={2}>
             <h3 className='text-center'>Information</h3>
-            <p className='text-center mt-3 mb-4'>Exchange & Refund</p>
+            <p className='text-center mt-3 mb-4'>Return & Refund Policy</p>
           </Col>
           <Col md={2}>
             <h3 className='text-center'>Company</h3>
-            <div className='text-center mt-3'>About Us</div>
-            <div className='text-center mt-2 mb-4'>Contact Us</div>
+            <Link style={{ textDecoration: "none", color: "black" }} to="/home/aboutus">
+              <div className='text-center mt-3' style={{textDecoration: "none", color: "black", cursor: "pointer"}} to="/home/aboutus">About Us</div>
+            </Link>
           </Col>
           <Col md={2}>
             <h3 className='text-center'>Socials</h3>
@@ -77,12 +79,13 @@ function Footer() {
               ))}
             </Row>
           </Col>
-          <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+            <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
               <div>
                 <div className='text-center mb-1 mt-3'>Verified by</div>
-                <img style={{width: "125px"}} src={pay}/>
+                  <img style={{width: "125px"}} src={pay}/>
               </div>
             </div>
+            <div className='text-center mt-3'>Demo text for trade license number</div>
         </Row>
       </Container>
     </div>
