@@ -1,9 +1,10 @@
 import React from "react";
+import loading from "../images/Untitled (Instagram Post (45)).gif"
 
 export const Loading = () => {
     return(
-        <div className="col-12 text-center" /* style={{height: "100vh", width: "100vw"}} */>
-            <h1 style={{paddingTop: "30vh"}}>Loading...</h1>
+        <div className="col-12 text-center d-flex justify-content-center align-items-center" /* style={{height: "100vh", width: "100vw"}} */>
+            <img src={loading}/>
         </div>
     )
 }

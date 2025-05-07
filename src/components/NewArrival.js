@@ -28,7 +28,7 @@ function NewArr(props) {
 
     return (
         <Container className="best-seller">
-            <div className="d-flex justify-content-center pt-1 pb-3">
+            <div className="d-flex justify-content-center pt-2 pb-4">
                 <h2 className="headerdec newarrh" id="casestu">
                     <StaggeredText text={"New Arrivals"} />
                 </h2>

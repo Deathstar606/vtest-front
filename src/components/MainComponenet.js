@@ -19,6 +19,10 @@ import Fail from './PaymentStats/Fail';
 import Cancle from './PaymentStats/Cancle';
 
 import ShippingPoly from './Legal Info/ShippingPoly';
+import RefundPoly from './Legal Info/RefundPoly';
+import PrivacyPoly from './Legal Info/PrivacyPoly';
+import PaymentPoly from './Legal Info/PaymentPoly';
+import TermsConditions from './Legal Info/Terms&Condition';
 
 import { Link, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -179,6 +183,10 @@ const Main = (props) => {
             <Route path="/home/cancle/:tranId" element={<Cancle />} />
 
             <Route path="/home/shipping" element={<ShippingPoly />} />
+            <Route path="/home/privacy" element={<PrivacyPoly />} />
+            <Route path="/home/payment" element={<PaymentPoly />} />
+            <Route path="/home/terms" element={<TermsConditions />} />  
+            <Route path="/home/refund" element={<RefundPoly />} />          
 {/*             <Route path="/home/doctors" element={<AppointmentForm />} />
             <Route path="/home/sunglass" element={<AllSun sunglasses={props.sunglass} />} />
             <Route path="/home/sunglass/men" element={<FilteredMensSun sunglasses={props.sunglass} />} />

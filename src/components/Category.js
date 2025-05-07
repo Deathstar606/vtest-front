@@ -3,8 +3,10 @@ import { Container, Row, Col, CardImg } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./card.css";
-import shrits from "../images/WhatsApp Image 2025-04-26 at 3.16.36 AM.jpeg";
-import polos from "../images/WhatsApp Image 2025-04-26 at 3.27.54 AM.jpeg";
+import shrits from "../images/category/shirt.JPG";
+import polos from "../images/category/polo.JPG";
+import luxury from "../images/category/luxury.JPG";
+import summer from "../images/category/summer.JPG";
 import demo from "../images/kyle-loftus-6TIoPIpMvLc-unsplash.jpg";
 
 const Cats = {
@@ -21,6 +23,20 @@ const Cats = {
     short: "Some short description for Polo",
     cats: ["Polo Shirt"],
     links: ["/home/polo"]
+  },
+  primary3: {
+    name: "Luxury",
+    img: luxury,
+    short: "Some short description for Luxury Wear",
+    cats: ["Luxury Wear"],
+    links: ["/"]
+  },
+  primary4: {
+    name: "Summer",
+    img: summer,
+    short: "Some short description for Summer wear",
+    cats: ["Summer Wear"],
+    links: ["/"]
   }
 };
 

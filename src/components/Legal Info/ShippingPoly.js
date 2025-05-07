@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Container, Row } from "reactstrap";
 import { Breadcrumb } from "../BreadCrumb";
 import { StaggeredText } from "../Animations";
 
 function ShippingPoly () {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []); 
+
     return (
         <Container style={{ maxWidth: "90%" }}>
             <Row>
@@ -13,7 +17,7 @@ function ShippingPoly () {
                 ]} />   
             </Row>
             <Container>
-                <div className="d-flex justify-content-center pb-3 mt-4">
+                <div className="d-flex justify-content-center pb-4 mt-4">
                     <h1 className="text-bold text-center"><StaggeredText text={"Shipping Policy"} /></h1>
                 </div>
                 <p className="pb-2">Thank you for choosing VELOURA as your trusted online product or service provider. This Delivery Policy outlines the terms and conditions regarding the delivery of products and services purchased through our platform. By placing an order with us, you agree to comply with and be bound by the following policies:</p>

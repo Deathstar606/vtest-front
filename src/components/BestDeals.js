@@ -28,7 +28,7 @@ function BestD(props) {
 
     return (
         <Container style={{ maxWidth: "88%" }}>
-            <div className="d-flex justify-content-center pt-3 pb-5">
+            <div className="d-flex justify-content-center pt-2 pb-4">
                 <h2 className="headerdec newarrh" id="deal">
                     <StaggeredText text={"Best Deals"} />
                 </h2>
