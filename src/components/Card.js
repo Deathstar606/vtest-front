@@ -25,7 +25,8 @@ export const Product = ({ category, child }) => {
         null;
 
     return (
-        <>
+        <div className="d-flex flex-column h-100">
+            {/* Image section stays in curd */}
             <div className="curd">
                 {child.discount && (
                     <span 
@@ -43,43 +44,54 @@ export const Product = ({ category, child }) => {
                         </div>
                         <MediaQuery minWidth={640}>
                             <div className="pro-img-butt">
-                                <div style={{display: "inline-block"}} className="butt">Details</div>
+                                <div style={{ display: "inline-block" }} className="butt">Details</div>
                             </div>
                         </MediaQuery>
                     </div>            
                 </Link>
             </div>
-            <div className="p-2 pt-2 d-flex justify-content-center text-center">
+
+            {/* Content + mobile button section */}
+            <div className="p-2 pt-2 d-flex flex-column text-center flex-grow-1">
                 <div>
-  
-                    <h5 /* style={{whiteSpace: 'nowrap'}} */ className="mb-2 mt-2">{child.name}</h5>
+                    <h5
+                        className="mb-2 mt-2"
+                        style={{
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis'
+                        }}
+                    >
+                        {child.name}
+                    </h5>
 
                     <div className="color-options d-flex justify-content-center mb-2">
-                    {child.color.map((col, index) => (
-                        <div
-                        key={index}
-                        className="color-box"
-                        style={{
-                            backgroundColor: col,
-                            width: '17px',
-                            height: '17px',
-                            marginRight: '8px',
-                            marginBottom: "5px",
-                            borderRadius: '50%',
-                            cursor: 'pointer'
-                        }}
-                        onClick={() => changeCol(col)}
-                        />
-                    ))}
+                        {child.color.map((col, index) => (
+                            <div
+                                key={index}
+                                className="color-box"
+                                style={{
+                                    backgroundColor: col,
+                                    width: '17px',
+                                    height: '17px',
+                                    marginRight: '8px',
+                                    marginBottom: "5px",
+                                    borderRadius: '50%',
+                                    cursor: 'pointer'
+                                }}
+                                onClick={() => changeCol(col)}
+                            />
+                        ))}
                     </div>
+
                     <div className="d-flex justify-content-center align-items-center">
                         {child.discount ? (
                             <>
-                                <span className="text-muted me-2 mr-2" style={{ textDecoration: 'line-through', whiteSpace: 'nowrap' }}>
-                                    {child.price}&nbsp;Tk
+                                <span className="text-muted me-2" style={{ textDecoration: 'line-through', whiteSpace: 'nowrap' }}>
+                                    {child.price} Tk
                                 </span>
-                                <span className="text-danger fw-bold me-2" style={{ whiteSpace: 'nowrap' }}>
-                                    {discountedPrice}&nbsp;Tk
+                                <span className="text-danger fw-bold" style={{ whiteSpace: 'nowrap' }}>
+                                    {discountedPrice} Tk
                                 </span>
                             </>
                         ) : (
@@ -88,13 +100,15 @@ export const Product = ({ category, child }) => {
                             </div>
                         )}
                     </div>
-                        <MediaQuery maxWidth={639}>
-                            <Link to={`/home/${category}/${child._id}`}>
-                                <div style={{display: "inline-block"}} className="butt mt-3">Details</div>
-                            </Link>
-                        </MediaQuery>
                 </div>
+
+                {/* Mobile-only button at bottom */}
+                <MediaQuery maxWidth={639}>
+                    <Link to={`/home/${category}/${child._id}`} className="mt-auto">
+                        <div style={{ display: "inline-block" }} className="butt mt-3">Details</div>
+                    </Link>
+                </MediaQuery>
             </div>
-        </>
+        </div>
     );
 };

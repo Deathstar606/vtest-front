@@ -36,7 +36,7 @@ function NewArr(props) {
             <Row className="pb-5 d-flex justify-content-center">
                 {newItems.length > 0 ? (
                     newItems.map((item, index) => (
-                        <Col key={index} md={3} xs={6} className="mt-4">
+                        <Col key={index} md={3} xs={6} className="mb-5 d-flex flex-column">
                             <Product category={item.category} child={item.cloth} />
                         </Col>
                     ))
