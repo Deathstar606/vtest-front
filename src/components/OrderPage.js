@@ -28,7 +28,9 @@ const steps = [
 function Order (props) {
   const [total, setTotal] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState('online');
+
   const [deliveryZone, setDeliveryZone] = useState(null);
+  const [deliveryFee, setDeliveryFee] = useState(0);
 
   const [voucher, setVoucher] = useState('');
   const [discount, setDiscount] = useState(0);
@@ -59,6 +61,11 @@ function Order (props) {
 
   const handlezone = (zone) => {
     setDeliveryZone(zone);
+    if (zone === "outside") {
+      setDeliveryFee(120);
+    } else if (zone === "inside") {
+      setDeliveryFee(70);
+    }
   };
 
     const [formData, setFormData] = useState({
@@ -67,6 +74,7 @@ function Order (props) {
       phoneNumber: '',
       address: '',
       email: '',
+      delivery: deliveryFee,
       total: finalTotal,
       items: []
     });
@@ -94,10 +102,11 @@ function Order (props) {
     useEffect(() => {
       setFormData((prevData) => ({
         ...prevData,
-        total: finalTotal,
+        delivery: deliveryFee,
+        total: finalTotal + deliveryFee,
         items: props.orders,
       }));
-    }, [finalTotal, props.orders]);
+    }, [finalTotal, deliveryFee, props.orders]);
 
     const handleChange = (e) => {
       setFormData({
@@ -134,6 +143,7 @@ function Order (props) {
         order_stat: paymentMethod
       };
     
+      // Validation
       if (formData.firstName === "") {
         setLoading(false);
         return alert("Please type your first name");
@@ -154,19 +164,31 @@ function Order (props) {
         setLoading(false);
         return alert("Please add items to your cart first");
       }
+      if (deliveryZone === null) {
+        setLoading(false);
+        return alert("Select a delivery zone first");
+      }
       if (!agreeTerm) {
         setLoading(false);
         return alert("You must agree to terms and conditions");
       }
     
       try {
-        const response = await axios.post(baseUrl + 'orders', orderToSubmit, {
+        // Decide which endpoint to hit
+        const endpoint = paymentMethod === "cod" ? `${baseUrl}orders/cod` : `${baseUrl}orders`;
+    
+        const response = await axios.post(endpoint, orderToSubmit, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
     
-        window.open(response.data.url);
+        // For online payment, open the payment gateway URL
+        if (paymentMethod !== "cod") {
+          window.open(response.data.url);
+        } else {
+          alert("Order placed successfully with Cash on Delivery.");
+        }
       } catch (error) {
         if (error.response) {
           console.error("Error response:", error.response.data);
@@ -328,7 +350,7 @@ function Order (props) {
                           cursor: "pointer"
                         }}
                       >
-                        Collect from inside khulna with a delivery charge of 80TK
+                        Collect from inside khulna with a delivery charge of 70TK
                         {deliveryZone === 'inside' && (
                           <div
                             style={{
@@ -356,7 +378,7 @@ function Order (props) {
                           cursor: "pointer"
                         }}
                       >
-                        Collect from outside khulna with a delivery charge of 125TK
+                        Collect from outside khulna with a delivery charge of 120TK
                         {deliveryZone === 'outside' && (
                           <div
                             style={{
@@ -434,8 +456,9 @@ function Order (props) {
                         </div>
                       </div>
                     </FormGroup>
+                    <h5 className='pb-2'>Delivery Fee: {deliveryFee}TK</h5>
                     <h4>
-                      <strong>Total:</strong> {finalTotal.toFixed(2)} Tk
+                      <strong>Total:</strong> {(finalTotal + deliveryFee).toFixed(2)} Tk
                     </h4>
 
                     {voucherApplied && (
@@ -463,7 +486,7 @@ function Order (props) {
                           Cash on Delivery
                       </Label>
                     </FormGroup>
-                    <FormGroup check>
+                    <FormGroup check className="mr-2">
                       <Label check>
                         <Input
                           type="radio"
@@ -475,6 +498,27 @@ function Order (props) {
                         Online Payment
                       </Label>
                     </FormGroup>
+                    <FormGroup check>
+                      <Label check>
+                        <Input
+                          type="radio"
+                          name="paymentMethod"
+                          value="partialcod"
+                          checked={paymentMethod === 'partialcod'}
+                          onChange={handlePaymentChange}
+                        />
+                        Partial Payment
+                      </Label>
+                    </FormGroup>
+                    {paymentMethod == "cod" && (
+                      <p className='pt-2 text-muted'>Make Full payment after product has been delivered</p>
+                    )}
+                    {paymentMethod == "online" && (
+                      <p className='pt-2 text-muted'>Make the full payment online</p>
+                    )}
+                    {paymentMethod == "partialcod" && (
+                      <p className='pt-2 text-muted'>Only pay the delivery fee pay product fee after product arrival</p>
+                    )}
                       <Label className='mt-2'>
                         <input
                           className='mr-2'

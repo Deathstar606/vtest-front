@@ -18,6 +18,8 @@ import Success from './PaymentStats/Success';
 import Fail from './PaymentStats/Fail';
 import Cancle from './PaymentStats/Cancle';
 
+import ShippingPoly from './Legal Info/ShippingPoly';
+
 import { Link, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCloth, fetchOrders, fetchProdReq, fetchVouchers, addNewOrder, removeExistingOrder, toggleCartPanel, loginUser, logoutUser } from '../Redux/ActionCreators';
@@ -171,9 +173,12 @@ const Main = (props) => {
             <Route path="/home/aboutus" element={<About />} />
             <Route path="/home/orders" element={<Order orders={props.orders.orders} removeExistingOrder={props.removeExistingOrder}/>} />
             <Route path="/home/admin" element={<AdminPanel auth={props.auth} clothes={props.clothes.clothes} prodreq={props.prodreq.prodreq} vouchers={props.vouchers.vouchers} loginUser={props.loginUser} logoutUser={props.logoutUser}/>} />
+
             <Route path="/home/paystat/:tranId" element={<Success />} />
             <Route path="/home/failure/:tranId" element={<Fail />} />
             <Route path="/home/cancle/:tranId" element={<Cancle />} />
+
+            <Route path="/home/shipping" element={<ShippingPoly />} />
 {/*             <Route path="/home/doctors" element={<AppointmentForm />} />
             <Route path="/home/sunglass" element={<AllSun sunglasses={props.sunglass} />} />
             <Route path="/home/sunglass/men" element={<FilteredMensSun sunglasses={props.sunglass} />} />
