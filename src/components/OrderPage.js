@@ -338,7 +338,7 @@ function Order (props) {
                           />
                       </FormGroup>
                     </Form>
-                    <h2 className='text-center mt-4'>Select Shipping method</h2>
+                    <h2 className='text-center mt-4'>Select Delivery Zone</h2>
                     <div>
                       <div
                         className='text-center mt-4'
