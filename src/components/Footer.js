@@ -43,7 +43,7 @@ function Footer() {
     <div
       style={{
         /* borderTop: "2px solid rgba(199, 198, 197, 0.13)", */
-        background: "linear-gradient(to top,rgb(194, 109, 30), white)",
+        background: "rgba(163, 163, 163, 0.41)",
         padding: "5% 0",
       }}
     >
@@ -117,7 +117,7 @@ function Footer() {
           </Col>
         </Row>
         <Row className="justify-content-center mt-2">
-          <Col md={7} style={{borderRight: "1px solid black", borderLeft: "1px solid black"}}>
+          <Col md={6}>
             <Row className="g-0 d-flex justify-content-center pr-3 pl-3">
               {paymentIcons.map((icon, idx) => (
                 <Col
