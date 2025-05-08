@@ -22,7 +22,6 @@ import { Link } from 'react-router-dom';
 
 const paymentIcons = [
   bkash,
-  pathao,
   mCash,
   myCash,
   upay,
@@ -44,7 +43,7 @@ function Footer() {
     <div
       style={{
         /* borderTop: "2px solid rgba(199, 198, 197, 0.13)", */
-        background: "linear-gradient(to top, #b6b4ae, white)",
+        background: "linear-gradient(to top,rgb(194, 109, 30), white)",
         padding: "5% 0",
       }}
     >
@@ -118,19 +117,19 @@ function Footer() {
           </Col>
         </Row>
         <Row className="justify-content-center mt-2">
-          <Col md={4} style={{borderRight: "1px solid black", borderLeft: "1px solid black"}}>
-            <Row className="g-0">
+          <Col md={7} style={{borderRight: "1px solid black", borderLeft: "1px solid black"}}>
+            <Row className="g-0 d-flex justify-content-center pr-3 pl-3">
               {paymentIcons.map((icon, idx) => (
                 <Col
-                  md={2}
-                  sm={2}
-                  xs={3}
+                  md={1}
+                  sm={1}
+                  xs={2}
                   key={idx}
-                  className="text-center border-start border-end px-0"
+                  className="text-center border-start border-end px-1 mb-2"
                 >
                   <img
                     className="text-dark p-2 rounded"
-                    style={{width: "100%"}}
+                    style={{width: "100%", border: "1px solid black", boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)"}}
                     src={icon}
                   />
                 </Col>

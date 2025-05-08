@@ -3,10 +3,10 @@ import { Container, Row, Col, CardImg } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./card.css";
-import shrits from "../images/category/shirt.JPG";
+import shrits from "../images/category/shirt.PNG";
 import polos from "../images/category/polo.JPG";
 import luxury from "../images/category/luxury.JPG";
-import summer from "../images/category/summer.JPG";
+import summer from "../images/category/summer.jpg";
 import demo from "../images/kyle-loftus-6TIoPIpMvLc-unsplash.jpg";
 
 const Cats = {
