@@ -2,39 +2,38 @@ import React from 'react';
 import pay from "../images/sslcom.png"
 import { Form, Button, Container, Row, Col, FormGroup, Input } from 'reactstrap';
 import ssl from "../images/Pay logo/1 (1).png"
-import bkash from "../images/Pay logo/1.png";
-import pathao from "../images/Pay logo/2 (1).png";
-import mCash from "../images/Pay logo/2.png";
-import myCash from "../images/Pay logo/3.png";
-import upay from "../images/Pay logo/4.png";
-import rocket from "../images/Pay logo/5.png";
-import qcash from "../images/Pay logo/6.png";
-import nexusPay from "../images/Pay logo/7.png";
-import unionPay from "../images/Pay logo/8.png";
-import amex from "../images/Pay logo/9.png";
-import visa from "../images/Pay logo/10.png";
-import nagad from "../images/Pay logo/11.png";
-import mastercard from "../images/Pay logo/12.png";
-import islamiWallet from "../images/Pay logo/13.png";
-import iPay from "../images/Pay logo/14.png";
+import ae from '../images/Pay logo/ae.png';
+import ak from '../images/Pay logo/ak.png';
+import bk from '../images/Pay logo/bk.png';
+import ipat from '../images/Pay logo/ipat.png';
+import iw from '../images/Pay logo/iw.png';
+import masterc from '../images/Pay logo/masterc.png';
+import mc from '../images/Pay logo/mc.png';
+import nagad from '../images/Pay logo/nagad.png';
+import np from '../images/Pay logo/np.png';
+import qc from '../images/Pay logo/qc.png';
+import rc from '../images/Pay logo/rc.png';
+import unip from '../images/Pay logo/unip.png';
+import up from '../images/Pay logo/up.png';
+import visa from '../images/Pay logo/visa.png';
 import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const paymentIcons = [
-  bkash,
-  mCash,
-  myCash,
-  upay,
-  rocket,
-  qcash,
-  nexusPay,
-  unionPay,
-  amex,
-  visa,
+export const paymentIcons = [
+  ae,
+  ak,
+  bk,
+  ipat,
+  iw,
+  masterc,
+  mc,
   nagad,
-  mastercard,
-  islamiWallet,
-  iPay
+  np,
+  qc,
+  rc,
+  unip,
+  up,
+  visa,
 ];
 
 function Footer() {
@@ -117,13 +116,13 @@ function Footer() {
           </Col>
         </Row>
         <Row className="justify-content-center mt-2">
-          <Col md={6}>
+          <Col md={7}>
             <Row className="g-0 d-flex justify-content-center pr-3 pl-3">
               {paymentIcons.map((icon, idx) => (
                 <Col
                   md={1}
-                  sm={1}
-                  xs={2}
+                  sm={3}
+                  xs={3}
                   key={idx}
                   className="text-center border-start border-end px-1 mb-2"
                 >

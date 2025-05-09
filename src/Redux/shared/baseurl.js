@@ -1,3 +1,7 @@
-//export const baseUrl = 'https://vtest-back.vercel.app/';
-export const baseUrl = 'http://localhost:9000/';
-//export const baseUrl = 'https://test-launch-wheat.vercel.app/';
+// baseUrl.js
+
+export const baseUrlProd = 'https://vtest-back.vercel.app/';
+export const baseUrlDev = 'http://localhost:9000/';
+
+// Choose which to use
+export const baseUrl = baseUrlDev; // change this manually when needed

@@ -216,7 +216,7 @@ const Deats = (props) => {
             <div className='w-100 text-white text-center py-2 mb-4' style={{backgroundColor: "black"}}>
                 5% off on all online payments
             </div>
-            <Container style={{ maxWidth: "90%" }}>
+            <Container style={{ maxWidth: "90%" }} className='pb-5'>
                 <MediaQuery maxWidth={639}>
                     <Row>
                         <Breadcrumb items={[

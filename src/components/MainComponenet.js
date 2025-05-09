@@ -118,6 +118,36 @@ const FullShirt = ({ clothes }) => {
   );
 };
 
+const LuxuryShirt = ({ clothes }) => {
+  const colthList = clothes
+    .filter(cloth => cloth.category === "luxury shirt")
+    .flatMap(cloth => cloth.items);
+
+  return (
+    <ProdList category="luxury shirt" products={colthList} />
+  );
+};
+
+const LuxuryPolo = ({ clothes }) => {
+  const colthList = clothes
+    .filter(cloth => cloth.category === "luxury polo")
+    .flatMap(cloth => cloth.items);
+
+  return (
+    <ProdList category="luxury polo" products={colthList} />
+  );
+};
+
+const SummerPolo = ({ clothes }) => {
+  const colthList = clothes
+    .filter(cloth => cloth.category === "summer polo")
+    .flatMap(cloth => cloth.items);
+
+  return (
+    <ProdList category="summer polo" products={colthList} />
+  );
+};
+
 const Home = ({ clothes }) => (
   <motion.div
     transition={{ duration: 1.2, type: "tween", ease: [0.25, 0.1, 0.25, 1] }}
@@ -171,9 +201,14 @@ const Main = (props) => {
           <Routes>
             <Route path="/home" element={<Home clothes={props.clothes} />} />
             <Route path="/home/:category/:clothId" element={<ClothId clothes={props.clothes.clothes} addNewOrder={props.addNewOrder} toggleCartPanel={props.toggleCartPanel} />} />
+            
             <Route path="/home/shirt" element={<TShirts clothes={props.clothes.clothes} />} />
             <Route path="/home/polo" element={<Polo clothes={props.clothes.clothes} />} />
             <Route path="/home/fshirt" element={<FullShirt clothes={props.clothes.clothes} />} />
+            <Route path="/home/lushirt" element={<LuxuryShirt clothes={props.clothes.clothes} />} />
+            <Route path="/home/lupolo" element={<LuxuryPolo clothes={props.clothes.clothes} />} />
+            <Route path="/home/supolo" element={<SummerPolo clothes={props.clothes.clothes} />} />
+            
             <Route path="/home/aboutus" element={<About />} />
             <Route path="/home/orders" element={<Order orders={props.orders.orders} removeExistingOrder={props.removeExistingOrder}/>} />
             <Route path="/home/admin" element={<AdminPanel auth={props.auth} clothes={props.clothes.clothes} prodreq={props.prodreq.prodreq} vouchers={props.vouchers.vouchers} loginUser={props.loginUser} logoutUser={props.logoutUser}/>} />

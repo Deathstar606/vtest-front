@@ -28,15 +28,15 @@ const Cats = {
     name: "Luxury",
     img: luxury,
     short: "Some short description for Luxury Wear",
-    cats: ["Luxury Wear"],
-    links: ["/"]
+    cats: ["Luxury Shirt", "Luxury Polo"],
+    links: ["/home/lushirt", "/home/lupolo"]
   },
   primary4: {
     name: "Summer",
     img: summer,
     short: "Some short description for Summer wear",
-    cats: ["Summer Wear"],
-    links: ["/"]
+    cats: ["Summer Polo"],
+    links: ["/home/supolo"]
   }
 };
 

@@ -79,18 +79,18 @@ const Example = (props) => {
                         </li>
                       </RouterLink>
                     <li className="pl-3 pb-1" style={{ color: "rgb(255, 153, 0)" }}>Luxury Wear</li>
-                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/">
+                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/lushirt">
                         <li className="pl-4 pb-1">
                           <span className="sub-lable">Luxury Shirt</span>
                         </li>
                       </RouterLink>
-                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/">
+                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/lupolo">
                         <li className="pl-4 pb-1">
                           <span className="sub-lable">Luxury Polo</span>
                         </li>
                       </RouterLink>
                     <li className="pl-3 pb-1" style={{ color: "rgb(255, 153, 0)" }}>Summer Collection</li>
-                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/">
+                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/supolo">
                         <li className="pl-4 pb-1">
                           <span className="sub-lable">Summer Polo</span>
                         </li>

@@ -70,7 +70,7 @@ useEffect(() => {
                         <Link to="/home/shirt" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
                           <h5 className='text-center'>Half Sleve</h5>
                         </Link>
-                        <Link to="/home/fshirt" style={{textDecoration: "none", color: "inherit"}}>
+                        <Link to="/home/fshirt" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
                           <h5 className='text-center'>Full Sleve</h5>
                         </Link>
                       <h4 style={{ color: "rgb(255, 153, 0)" }} className='text-center'>Polo</h4>
@@ -78,14 +78,14 @@ useEffect(() => {
                           <h5 className='text-center'>Polo Shirt</h5>
                         </Link>
                       <h4 style={{ color: "rgb(255, 153, 0)" }} className='text-center'>Luxury Wear</h4>
-                        <Link to="/home/shirt" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
+                        <Link to="/home/lushirt" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
                           <h5 className='text-center'>Luxury Shirt</h5>
                         </Link>
-                        <Link to="/home/shirt" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
+                        <Link to="/home/lupolo" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
                           <h5 className='text-center'>Luxury Polo</h5>
                         </Link>
                       <h4 style={{ color: "rgb(255, 153, 0)" }} className='text-center'>Summer Collection</h4>
-                        <Link to="/home/shirt" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
+                        <Link to="/home/supolo" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
                           <h5 className='text-center'>Summer Polo</h5>
                         </Link>
                     </motion.div>

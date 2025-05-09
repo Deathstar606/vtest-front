@@ -87,7 +87,7 @@ export const Product = ({ category, child }) => {
                     <div className="d-flex justify-content-center align-items-center">
                         {child.discount ? (
                             <>
-                                <span className="text-muted me-2" style={{ textDecoration: 'line-through', whiteSpace: 'nowrap' }}>
+                                <span className="text-muted me-2 mr-2" style={{ textDecoration: 'line-through', whiteSpace: 'nowrap' }}>
                                     {child.price} Tk
                                 </span>
                                 <span className="text-danger fw-bold" style={{ whiteSpace: 'nowrap' }}>

@@ -16,7 +16,7 @@ function PrivacyPoly () {
                     { name: "", link: '', active: true }
                 ]} />   
             </Row>
-            <Container>
+            <Container className="pb-5">
                 <div className="d-flex justify-content-center pb-4 mt-4">
                     <h1 className="text-bold text-center"><StaggeredText text={"Privacy Policy"} /></h1>
                 </div>
