@@ -32,7 +32,7 @@ const ProductList = (props) => {
     const isInview = useInView(ref)
 
     const [selectedPriceRance, setPriceRance] = useState({
-        priceRange: [0, 2500],  // Default range
+        priceRange: [0, 4000],  // Default range
     });
 
     const handlePriceChange = (values) => {
@@ -106,7 +106,7 @@ const ProductList = (props) => {
                                                 values={selectedPriceRance.priceRange}
                                                 step={1}
                                                 min={0}
-                                                max={2500}
+                                                max={4000}
                                                 onChange={handlePriceChange}
                                                 renderTrack={({ props, children }) => (
                                                     <div
@@ -180,7 +180,7 @@ const ProductList = (props) => {
                                                     values={selectedPriceRance.priceRange}
                                                     step={1}
                                                     min={0}
-                                                    max={100}
+                                                    max={4000}
                                                     onChange={handlePriceChange}
                                                     renderTrack={({ props, children }) => (
                                                         <div
