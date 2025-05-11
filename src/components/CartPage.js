@@ -49,6 +49,24 @@ export const OrderBar = (props) => {
             overflowY: props.orders.orders.length > 0 ? 'auto' : 'hidden',
             padding: '0 1rem', // Add padding for aesthetics
           }}>
+              {props.orders.orders.length > 0 && (
+              <div style={{
+                position: 'sticky',
+                top: 0,
+                backgroundColor: 'white',
+                zIndex: 10,
+                borderBottom: '1px solid #ccc',
+                padding: '10px',
+                textAlign: 'center',
+              }}>
+                <div className="d-flex justify-content-center">
+                  <RouterLink to="/home/orders">
+                    <button style={{paddingRight: "40px", paddingLeft: "40px"}} onClick={props.handleOrdPage} className='butt mt-2 mb-2'><strong style={{color: "rgb(255, 153, 0)"}}>Checkout</strong></button>
+                  </RouterLink>
+                </div>
+                <div>Total: {total} TK</div>
+              </div>
+            )}
             <ul className='p-3' style={{ padding: 0, listStyleType: 'none' }}>
               {props.orders.orders.length > 0 ? (
                 props.orders.orders.map((order, index) => (
@@ -93,7 +111,7 @@ export const OrderBar = (props) => {
                 </>
               )}
             </ul>
-            {props.orders.orders.length > 0 && (
+{/*             {props.orders.orders.length > 0 && (
             <div className='pt-1' style={{borderTop: "1px solid black", display: "flex", justifyContent: "center"}}>
               <div>
                 <div className='mt-1 ml-3 mb-2 ml-2 text-center'>Total: {total} Tk </div>
@@ -102,7 +120,7 @@ export const OrderBar = (props) => {
                 </RouterLink>
               </div>
             </div>
-          )}
+          )} */}
           </div>
         </motion.div>
       </motion.div>

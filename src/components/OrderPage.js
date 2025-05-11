@@ -26,6 +26,7 @@ const steps = [
 ];
 
 function Order (props) {
+  console.log(props)
   const [total, setTotal] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState('online');
 
@@ -43,6 +44,12 @@ function Order (props) {
   const [payerror, setPayerror] = useState("");
 
   const finalTotal = total - discount;
+
+  const removeOrder = (orderid) => {
+    setDiscount(0);
+    setVoucherApplied(false)
+    props.removeExistingOrder(orderid)
+  }
 
   const handleChangeTerm = (e) => {
     setagreeTerm(!agreeTerm)
@@ -106,7 +113,7 @@ function Order (props) {
         total: finalTotal + deliveryFee,
         items: props.orders,
       }));
-    }, [finalTotal, deliveryFee, props.orders]);
+    }, [finalTotal, discount, deliveryFee, props.orders]);
 
     const handleChange = (e) => {
       setFormData({
@@ -116,6 +123,7 @@ function Order (props) {
     };
 
     const submitVoucher = async () => {
+      setLoading(true);
       try {
         const response = await axios.post(`${baseUrl}voucher`, { name: voucher });
         console.log(response)
@@ -123,10 +131,12 @@ function Order (props) {
   
         setDiscount((total * value) / 100);
         setVoucherApplied(true);
+        setLoading(false);
         setError('');
       } catch (err) {
         setVoucherApplied(false);
         setDiscount(0);
+        setLoading(false);
         setError('Invalid or expired voucher.');
       }
     };
@@ -365,7 +375,7 @@ function Order (props) {
                             Selected
                           </div>
                         )}
-                        <p className='text-center pt-1 text-muted'>Delivery Time 5 days</p>
+                        <p className='text-center pt-1 text-muted'>Delivery Time within 24hrs</p>
                       </div>
 
                       <div
@@ -393,7 +403,7 @@ function Order (props) {
                             Selected
                           </div>
                         )}
-                        <p className='text-center pt-1 text-muted'>Delivery Time 1 day</p>
+                        <p className='text-center pt-1 text-muted'>Delivery Time 24-48hrs</p>
                       </div>
                     </div>
                   </Col>
@@ -430,7 +440,7 @@ function Order (props) {
                             </Col>
                           </Row>
                           <div className='pb-4 pt-3' style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <button className='butt' outline onClick={() => props.removeExistingOrder(order.cart_id)}>Remove</button>
+                            <button className='butt' outline onClick={() => /* props.removeExistingOrder */removeOrder(order.cart_id)}>Remove</button>
                           </div>
                         </React.Fragment>
                       ))
@@ -451,10 +461,11 @@ function Order (props) {
                           placeholder="Enter voucher"
                           className="flex-grow-1 mr-2 voucherInp"
                         />
-                        <div className="butt" onClick={submitVoucher}>
+                        <div disabled={loading} className="butt" onClick={submitVoucher}>
                           Apply
                         </div>
                       </div>
+                    {loading && <p className='pt-2'>Please wait while we the voucher is being applied...</p>}
                     </FormGroup>
                     <h5 className='pb-2'>Delivery Fee: {deliveryFee}TK</h5>
                     <h4>
@@ -527,9 +538,9 @@ function Order (props) {
                           onChange={handleChangeTerm}
                         />
                         I agree to the&nbsp;
-                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/terms" target="_blank">Terms & Conditions</Link>,&nbsp;
-                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/privacy-policy" target="_blank">Privacy Policy</Link>, and&nbsp;
-                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/return-policy" target="_blank">Return & Refund Policy</Link>.
+                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/terms" target="_blank">Terms & Conditions</Link>,&nbsp;
+                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/privacy" target="_blank">Privacy Policy</Link>, and&nbsp;
+                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/refund" target="_blank">Return & Refund Policy</Link>.
                       </Label>
                   </div>
                   <div className='pt-3 home-butt'>

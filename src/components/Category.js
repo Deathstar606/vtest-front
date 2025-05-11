@@ -15,7 +15,7 @@ const Cats = {
     img: shrits,
     short: "Some short description for Shirt",
     cats: ["Half Sleve", "Full Sleve"],
-    links: ["/home/shirt", "/home/fshirt"]
+    links: ["/home/shirt", "/home/full shirt"]
   },
   primary2: {
     name: "Polo",
@@ -29,7 +29,7 @@ const Cats = {
     img: luxury,
     short: "Some short description for Luxury Wear",
     cats: ["Luxury Shirt", "Luxury Polo"],
-    links: ["/home/lushirt", "/home/lupolo"]
+    links: ["/home/luxury shirt", "/home/luxury polo"]
   },
 /*   primary4: {
     name: "Summer",

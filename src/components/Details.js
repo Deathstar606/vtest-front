@@ -193,7 +193,7 @@ const Deats = (props) => {
             }
         )
     }; */
-
+    console.log(`/home/${category}`)
     if (props.isLoading) {
         return (
             <div className="container">
@@ -218,12 +218,21 @@ const Deats = (props) => {
             </div>
             <Container style={{ maxWidth: "90%" }} className='pb-5'>
                 <MediaQuery maxWidth={639}>
-                    <Row>
-                        <Breadcrumb items={[
-                            { name: 'Home', link: '/home', active: false },
-                            { name: category, link: `/home/${category}`, active: false },
-                            { name: props.deats.name, link: '', active: true }
-                        ]} />
+                    <Row style={{ maxWidth: '100%', overflow: 'hidden' }}>
+                    <Breadcrumb
+                        style={{
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: 'block',       // make sure it's treated like a block
+                        width: '100%'           // make sure it doesn't overflow the parent
+                        }}
+                        items={[
+                        { name: 'Home', link: '/home', active: false },
+                        { name: category, link: `/home/${encodeURIComponent(category)}`, active: false },
+                        { name: props.deats.name, link: '', active: true }
+                        ]}
+                    />
                     </Row>
                 </MediaQuery>
                 <Row /* className='d-flex justify-content-center' */>

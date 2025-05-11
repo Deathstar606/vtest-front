@@ -67,7 +67,7 @@ const Example = (props) => {
                           <span className="sub-lable">Half Sleeve</span>
                         </li>
                       </RouterLink>
-                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/fshirt">
+                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/full shirt">
                         <li className="pl-4 pb-1">
                           <span className="sub-lable">Full Sleeve</span>
                         </li>
@@ -79,12 +79,12 @@ const Example = (props) => {
                         </li>
                       </RouterLink>
                     <li className="pl-3 pb-1" style={{ color: "rgb(255, 153, 0)" }}>Luxury Wear</li>
-                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/lushirt">
+                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/luxury shirt">
                         <li className="pl-4 pb-1">
                           <span className="sub-lable">Luxury Shirt</span>
                         </li>
                       </RouterLink>
-                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/lupolo">
+                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/luxury polo">
                         <li className="pl-4 pb-1">
                           <span className="sub-lable">Luxury Polo</span>
                         </li>

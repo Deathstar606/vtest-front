@@ -12,7 +12,7 @@ export const Breadcrumb = ({ items }) => {
                             <span><FaAngleLeft color='rgb(0, 0, 0)' />Home</span>
                         </Link>
                     ) : item.active ? (
-                        <span className="ml-3">{item.name}</span>
+                        <span className="ml-3 breadcrumb-active-name">{item.name}</span>
                     ) : (
                         <Link className="ml-3" to={item.link}>{item.name}</Link>
                     )}

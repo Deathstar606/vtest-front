@@ -204,10 +204,10 @@ const Main = (props) => {
             
             <Route path="/home/shirt" element={<TShirts clothes={props.clothes.clothes} />} />
             <Route path="/home/polo" element={<Polo clothes={props.clothes.clothes} />} />
-            <Route path="/home/fshirt" element={<FullShirt clothes={props.clothes.clothes} />} />
-            <Route path="/home/lushirt" element={<LuxuryShirt clothes={props.clothes.clothes} />} />
-            <Route path="/home/lupolo" element={<LuxuryPolo clothes={props.clothes.clothes} />} />
-            <Route path="/home/supolo" element={<SummerPolo clothes={props.clothes.clothes} />} />
+            <Route path="/home/full shirt" element={<FullShirt clothes={props.clothes.clothes} />} />
+            <Route path="/home/luxury shirt" element={<LuxuryShirt clothes={props.clothes.clothes} />} />
+            <Route path="/home/luxury polo" element={<LuxuryPolo clothes={props.clothes.clothes} />} />
+            <Route path="/home/summer polo" element={<SummerPolo clothes={props.clothes.clothes} />} />
             
             <Route path="/home/aboutus" element={<About />} />
             <Route path="/home/orders" element={<Order orders={props.orders.orders} removeExistingOrder={props.removeExistingOrder}/>} />
