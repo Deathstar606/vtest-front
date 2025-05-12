@@ -401,7 +401,7 @@ const Orders = ({ order }) => {
         return;
       }
 
-      const response = await fetch(`${baseUrl}delete/${transactionId}`, {
+      const response = await fetch(`${baseUrl}orders/delete/${transactionId}`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -411,7 +411,7 @@ const Orders = ({ order }) => {
 
       if (response.ok) {
         alert("Order deleted successfully.");
-        // Optionally: window.location.reload();
+        window.location.reload();
       } else {
         const errorText = await response.text();
         console.error("Failed to delete order:", errorText);
@@ -431,7 +431,7 @@ const Orders = ({ order }) => {
         return;
       }
 
-      const response = await fetch(`${baseUrl}colmplete/${transactionId}`, {
+      const response = await fetch(`${baseUrl}orders/colmplete/${transactionId}`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -572,7 +572,7 @@ function AdminPanel(props) {
     }
 
     const online = props.prodreq.map((order) => {
-        if (order.order_stat == "online") {
+        if (order.order_stat == "online" && !order.completion) {
           return (
             <Orders order={order}/>
           )
@@ -580,7 +580,7 @@ function AdminPanel(props) {
     })
 
     const pcod = props.prodreq.map((order) => {
-        if (order.order_stat == "partialcod") {
+        if (order.order_stat == "partialcod" && !order.completion) {
           return (
             <Orders order={order}/>
           )
@@ -588,11 +588,19 @@ function AdminPanel(props) {
     })
 
     const cod = props.prodreq.map((order) => {
-        if (order.order_stat == "cod") {
+        if (order.order_stat == "cod" && !order.completion) {
           return (
             <Orders order={order}/>
           )
         }
+    })
+
+  const completed = props.prodreq.map((order) => {
+    if (order.completion) {
+      return (
+          <Orders order={order}/>
+        )
+      }
     })
 
     return (
@@ -674,6 +682,13 @@ function AdminPanel(props) {
                                   >
                                     Partial COD
                                   </button>
+                                  <button
+                                    className="mr-3"
+                                    style={{ backgroundColor: isComplete === 'complete' ? 'orange' : '' }}
+                                    onClick={() => handleClick('complete')}
+                                  >
+                                    Completed
+                                  </button>
                                 </div>
                                 <Row>
                                   {isComplete === 'online'
@@ -682,6 +697,8 @@ function AdminPanel(props) {
                                     ? pcod
                                     : isComplete === 'cod'
                                     ? cod
+                                    : isComplete === 'complete'
+                                    ? completed
                                     : null}
                                 </Row>
                               </>
