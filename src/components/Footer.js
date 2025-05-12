@@ -141,7 +141,7 @@ function Footer() {
                   <img style={{width: "125px"}} src={ssl}/>
               </div>
             </div>
-            <div className='text-center mt-3'>Demo text for trade license number</div>
+            <div className='text-center mt-3'>Trade License Number 10/458 </div>
         </Row>
       </Container>
     </div>

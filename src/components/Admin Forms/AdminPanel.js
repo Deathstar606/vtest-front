@@ -389,6 +389,70 @@ const Orders = ({ order }) => {
     const toggleDetails = () => {
       setIsExpanded(!isExpanded);
     };
+
+  const deleteOrder = async (transactionId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this order?");
+    if (!confirmDelete) return;
+
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("You must be logged in to perform this action.");
+        return;
+      }
+
+      const response = await fetch(`${baseUrl}delete/${transactionId}`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        alert("Order deleted successfully.");
+        // Optionally: window.location.reload();
+      } else {
+        const errorText = await response.text();
+        console.error("Failed to delete order:", errorText);
+        alert("Failed to delete order.");
+      }
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      alert("An unexpected error occurred.");
+    }
+  };
+
+  const toggleOrderCompletion = async (transactionId) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("You must be logged in to perform this action.");
+        return;
+      }
+
+      const response = await fetch(`${baseUrl}colmplete/${transactionId}`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(`Order completion status updated: ${data.completion ? 'Complete' : 'Incomplete'}`);
+        // Optionally reload or update UI state
+      } else {
+        const errorText = await response.text();
+        console.error("Failed to toggle completion:", errorText);
+        alert("Failed to toggle order completion.");
+      }
+    } catch (error) {
+      console.error("Error toggling completion:", error);
+      alert("An unexpected error occurred.");
+    }
+  };
   
     const dateFormat = (createdAt) => {
       const dateObj = new Date(createdAt);
@@ -423,7 +487,15 @@ const Orders = ({ order }) => {
           <p><strong>Phone:</strong> {order.phoneNumber}</p>
           <p><strong>Email:</strong> {order.email}</p>
           <p><strong>Address:</strong> {order.address}</p>
-          <p>Order Type: {order.order_type}</p>
+          <p>Order Type: {order.order_stat}</p>
+          {order.payment_stat && order.order_stat === 'partialcod' ? (
+            <p>Delivery charge has been paid</p>
+          ) : order.payment_stat ? (
+            <p>Order has been paid for</p>
+          ) : (
+            <p>Order will be paid for after arrival</p>
+          )}
+          <p>Delivery Charge: {order.delivery}TK</p>
           <div>
             {order.items.map((item, index) => (
               <span key={index}>
@@ -434,14 +506,14 @@ const Orders = ({ order }) => {
           </div>
           <h5>Total: {order.total} Tk</h5>
           <div className="d-flex justify-content-end">
-            <Button outline size="sm" color="secondary" className="mr-2">
+            <Button onClick={() => toggleOrderCompletion(order.transaction_id)} outline size="sm" color="secondary" className="mr-2">
                 Delivered
             </Button>
             <Button outline size="sm" color="secondary" className="mr-2">
                 Donwload Invoice
             </Button>
-            <Button outline size="sm" color="secondary">
-                Cancel
+            <Button onClick={() => deleteOrder(order.transaction_id)} outline size="sm" color="danger">
+                Delete
             </Button>
           </div>
         </div>
@@ -478,8 +550,7 @@ const Orders = ({ order }) => {
 };
 
 function AdminPanel(props) {
-  //console.log(props)
-    const [isComplete, setIsComplete] = useState("paid");
+    const [isComplete, setIsComplete] = useState("online");
     const [admin, setAdmin] = useState("orders");
     const [credentials, setCredentials] = useState({ username: "", password: "" });
 
@@ -500,24 +571,24 @@ function AdminPanel(props) {
         setIsComplete(select)
     }
 
-    const inComp = props.prodreq.map((order) => {
-        if (!order.payment_stat) {
+    const online = props.prodreq.map((order) => {
+        if (order.order_stat == "online") {
           return (
             <Orders order={order}/>
           )
         }
     })
 
-    const Comp = props.prodreq.map((order) => {
-        if (order.payment_stat) {
+    const pcod = props.prodreq.map((order) => {
+        if (order.order_stat == "partialcod") {
           return (
             <Orders order={order}/>
           )
         }
     })
 
-    const Delivered = props.prodreq.map((order) => {
-        if (order.order_stat) {
+    const cod = props.prodreq.map((order) => {
+        if (order.order_stat == "cod") {
           return (
             <Orders order={order}/>
           )
@@ -584,33 +655,33 @@ function AdminPanel(props) {
                                 <div className="d-flex pt-3 pb-3">
                                   <div
                                     className="mr-3 butt"
-                                    style={{ backgroundColor: isComplete === 'unpaid' ? 'orange' : '' }}
-                                    onClick={() => handleClick('unpaid')}
+                                    style={{ backgroundColor: isComplete === 'online' ? 'orange' : '' }}
+                                    onClick={() => handleClick('online')}
                                   >
-                                    Unpaid
+                                    Online
                                   </div>
                                   <button
                                     className="mr-3 butt"
-                                    style={{ backgroundColor: isComplete === 'paid' ? 'orange' : '' }}
-                                    onClick={() => handleClick('paid')}
+                                    style={{ backgroundColor: isComplete === 'cod' ? 'orange' : '' }}
+                                    onClick={() => handleClick('cod')}
                                   >
-                                    Paid
+                                    Cash on Delivery
                                   </button>
                                   <button
                                     className="mr-3"
-                                    style={{ backgroundColor: isComplete === 'delivered' ? 'orange' : '' }}
-                                    onClick={() => handleClick('delivered')}
+                                    style={{ backgroundColor: isComplete === 'partialcod' ? 'orange' : '' }}
+                                    onClick={() => handleClick('partialcod')}
                                   >
-                                    Delivered
+                                    Partial COD
                                   </button>
                                 </div>
                                 <Row>
-                                  {isComplete === 'paid'
-                                    ? Comp
-                                    : isComplete === 'unpaid'
-                                    ? inComp
-                                    : isComplete === 'delivered'
-                                    ? Delivered
+                                  {isComplete === 'online'
+                                    ? online
+                                    : isComplete === 'partialcod'
+                                    ? pcod
+                                    : isComplete === 'cod'
+                                    ? cod
                                     : null}
                                 </Row>
                               </>

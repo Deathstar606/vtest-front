@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Link as RouterLink } from 'react-router-dom';
 
 export const OrderBar = (props) => {
-  console.log(props.orders.orders)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ export const OrderBar = (props) => {
         >
           <div style={{
             flex: 1, // Allow this container to grow and take up available space
-            maxHeight: 'calc(100vh - 80px)', // Adjust max height to account for footer space
+            maxHeight: 'calc(100vh - 10px)', // Adjust max height to account for footer space
             overflowY: props.orders.orders.length > 0 ? 'auto' : 'hidden',
             padding: '0 1rem', // Add padding for aesthetics
           }}>
@@ -111,16 +110,6 @@ export const OrderBar = (props) => {
                 </>
               )}
             </ul>
-{/*             {props.orders.orders.length > 0 && (
-            <div className='pt-1' style={{borderTop: "1px solid black", display: "flex", justifyContent: "center"}}>
-              <div>
-                <div className='mt-1 ml-3 mb-2 ml-2 text-center'>Total: {total} Tk </div>
-                <RouterLink to="home/orders">
-                  <button onClick={props.handleOrdPage} className='butt ml-3'>Checkout</button>
-                </RouterLink>
-              </div>
-            </div>
-          )} */}
           </div>
         </motion.div>
       </motion.div>

@@ -88,15 +88,15 @@ export const Product = ({ category, child }) => {
                         {child.discount ? (
                             <>
                                 <span className="text-muted me-2 mr-2" style={{ textDecoration: 'line-through', whiteSpace: 'nowrap' }}>
-                                    {child.price} Tk
+                                    {child.price} TK
                                 </span>
                                 <span className="text-danger fw-bold" style={{ whiteSpace: 'nowrap' }}>
-                                    {discountedPrice} Tk
+                                    {discountedPrice} TK
                                 </span>
                             </>
                         ) : (
                             <div>
-                                <span className="fw-bold">{child.price} Tk</span>
+                                <span className="fw-bold">{child.price} TK</span>
                             </div>
                         )}
                     </div>

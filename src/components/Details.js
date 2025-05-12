@@ -299,14 +299,14 @@ const Deats = (props) => {
                                     {discountedPrice ? (
                                         <>
                                             <span className='text-muted mr-2' style={{ textDecoration: 'line-through' }}>
-                                                ${props.deats.price}
+                                                {props.deats.price}TK
                                             </span>
                                             <span className="text-danger ms-2">
-                                                ${discountedPrice}
+                                                {discountedPrice}TK
                                             </span>
                                         </>
                                     ) : (
-                                        `$${props.deats.price}`
+                                        `${props.deats.price} TK`
                                     )}
                                 </h5>
                                 <div className='mb-2 ml-2'>
