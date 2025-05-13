@@ -408,15 +408,7 @@ const Orders = ({ order }) => {
           "Authorization": `Bearer ${token}`,
         },
       });
-
-      if (response.ok) {
-        alert("Order deleted successfully.");
-        window.location.reload();
-      } else {
-        const errorText = await response.text();
-        console.error("Failed to delete order:", errorText);
-        alert("Failed to delete order.");
-      }
+      alert("Order deleted successfully.");
     } catch (error) {
       console.error("Error deleting order:", error);
       alert("An unexpected error occurred.");

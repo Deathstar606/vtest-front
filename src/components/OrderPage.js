@@ -41,6 +41,7 @@ function Order (props) {
   const [agreeTerm, setagreeTerm] = useState(false);
 
   const [loading, setLoading] = useState(false);
+  const [Vloading, setVLoading] = useState(false);
   const [payerror, setPayerror] = useState("");
 
   const finalTotal = total - discount;
@@ -123,7 +124,7 @@ function Order (props) {
     };
 
     const submitVoucher = async () => {
-      setLoading(true);
+      setVLoading(true);
       try {
         const response = await axios.post(`${baseUrl}voucher`, { name: voucher });
         console.log(response)
@@ -131,12 +132,12 @@ function Order (props) {
   
         setDiscount((total * value) / 100);
         setVoucherApplied(true);
-        setLoading(false);
+        setVLoading(false);
         setError('');
       } catch (err) {
         setVoucherApplied(false);
         setDiscount(0);
-        setLoading(false);
+        setVLoading(false);
         setError('Invalid or expired voucher.');
       }
     };
@@ -461,11 +462,11 @@ function Order (props) {
                           placeholder="Enter voucher"
                           className="flex-grow-1 mr-2 voucherInp"
                         />
-                        <div disabled={loading} className="butt" onClick={submitVoucher}>
+                        <div disabled={Vloading} className="butt" onClick={submitVoucher}>
                           Apply
                         </div>
                       </div>
-                    {loading && <p className='pt-2'>Please wait while we the voucher is being applied...</p>}
+                    {Vloading && <p className='pt-2'>Please wait while we the voucher is being applied...</p>}
                     </FormGroup>
                     <h5 className='pb-2'>Delivery Fee: {deliveryFee}TK</h5>
                     <h4>
