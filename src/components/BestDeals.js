@@ -4,7 +4,10 @@ import { StaggeredText } from "./Animations";
 import { Product } from "./Card";
 import "swiper/css";
 import "swiper/css/navigation";
+
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from 'swiper/modules'; // ✅ for Swiper v9+
+
 import MediaQuery from "react-responsive";
 import { Loading } from "./LoadingComponent";
 import "./card.css";
@@ -36,6 +39,7 @@ function BestD(props) {
                 <Row className="mt-1">
                     <MediaQuery minWidth={640}>
                         <Swiper
+                            modules={[Navigation]}
                             slidesPerView={4}
                             spaceBetween={20}
                             navigation={true}
@@ -45,6 +49,7 @@ function BestD(props) {
                     </MediaQuery>
                     <MediaQuery maxWidth={639}>
                         <Swiper
+                            modules={[Navigation]}
                             slidesPerView={1.5}
                             spaceBetween={15}
                             navigation={true}

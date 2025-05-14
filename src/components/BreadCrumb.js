@@ -9,12 +9,12 @@ export const Breadcrumb = ({ items }) => {
                 <div key={index} className="custom-breadcrumb-item">
                     {index === 0 ? (
                         <Link to={item.link}>
-                            <span><FaAngleLeft color='rgb(0, 0, 0)' />Home</span>
+                            <span className="breadcrumb-active-name"><FaAngleLeft color='rgb(0, 0, 0)' />Home</span>
                         </Link>
                     ) : item.active ? (
                         <span className="ml-3 breadcrumb-active-name">{item.name}</span>
                     ) : (
-                        <Link className="ml-3" to={item.link}>{item.name}</Link>
+                        <Link className="ml-3 breadcrumb-active-name" to={item.link}>{item.name}</Link>
                     )}
                 </div>
             ))}

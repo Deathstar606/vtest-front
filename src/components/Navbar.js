@@ -55,7 +55,7 @@ const Example = (props) => {
       <div className='d-flex justify-content-center'>
         <div className='nav-c pt-2 pb-2'>
           <Navbar light expand="md">
-            <NavbarBrand href="https://vtest-front.vercel.app/Veloura#/home" className='text-dark mr-auto'><img className='logo' src={logo}/></NavbarBrand>
+            <NavbarBrand href="https://www.velourabd.com/#/home" className='text-dark mr-auto'><img className='logo' src={logo}/></NavbarBrand>
             <MediaQuery minWidth={640}>
               <Nav navbar className="mx-auto">
                 <NavItem className="nav-ele">
