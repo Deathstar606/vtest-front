@@ -522,6 +522,7 @@ function Order (props) {
                         Partial Payment
                       </Label>
                     </FormGroup>
+                  </div>
                     {paymentMethod == "cod" && (
                       <p className='pt-2 text-muted'>Make Full payment after product has been delivered</p>
                     )}
@@ -531,19 +532,18 @@ function Order (props) {
                     {paymentMethod == "partialcod" && (
                       <p className='pt-2 text-muted'>Only pay the delivery fee pay product fee after product arrival</p>
                     )}
-                      <Label className='mt-2'>
-                        <input
-                          className='mr-2'
-                          type="checkbox"
-                          checked={agreeTerm}
-                          onChange={handleChangeTerm}
-                        />
-                        I agree to the&nbsp;
-                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/terms" target="_blank">Terms & Conditions</Link>,&nbsp;
-                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/privacy" target="_blank">Privacy Policy</Link>, and&nbsp;
-                        <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/refund" target="_blank">Return & Refund Policy</Link>.
-                      </Label>
-                  </div>
+                  <Label>
+                    <input
+                      className='mr-2'
+                      type="checkbox"
+                      checked={agreeTerm}
+                      onChange={handleChangeTerm}
+                    />
+                      I agree to the&nbsp;
+                    <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/terms" target="_blank">Terms & Conditions</Link>,&nbsp;
+                    <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/privacy" target="_blank">Privacy Policy</Link>, and&nbsp;
+                    <Link style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to="/home/refund" target="_blank">Return & Refund Policy</Link>.
+                  </Label>
                   <div className='pt-3 home-butt'>
                     <button
                       className='butt'
