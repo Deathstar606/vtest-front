@@ -258,7 +258,7 @@ const Deats = (props) => {
                             </div>
                         </Col>
                         <Col md={5} className='mx-0'>
-                            <img onClick={() => handleOpenFullscreen(mainImage)} src={mainImage} alt="Main" style={{ width: '100%', objectFit: 'fill', height: "80vh" }} />
+                            <img onClick={() => handleOpenFullscreen(mainImage)} src={mainImage} alt="Main" style={{ width: '90%', objectFit: 'fill', height: "80vh" }} />
                         </Col>
                     </MediaQuery>
                     <MediaQuery maxWidth={639}>
