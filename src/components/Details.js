@@ -257,7 +257,7 @@ const Deats = (props) => {
                                 ))}
                             </div>
                         </Col>
-                        <Col md={5} className='mx-0'>
+                        <Col md={5} className='mx-0 d-flex justify-content-center'>
                             <img onClick={() => handleOpenFullscreen(mainImage)} src={mainImage} alt="Main" style={{ width: '90%', objectFit: 'fill', height: "80vh" }} />
                         </Col>
                     </MediaQuery>
