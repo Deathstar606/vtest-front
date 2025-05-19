@@ -1,15 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { Row, Col, CardImg, Button } from 'reactstrap';
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import demo from "../images/demo.mp4"
-import MediaQuery from "react-responsive";
-import glass from "../images/Hero/sunglass.png"
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from 'swiper/modules';
-// Import Swiper styles
-import "swiper/css";
 
 const TextCycle = ({ texts }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -94,6 +85,16 @@ const TextCycle = ({ texts }) => {
 };
 
 const HeroSec = () => {
+  const text = "Wear Your Story...";
+  const words = text.split(" ");
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % words.length);
+    }, 1500); // 1 second per word
+    return () => clearInterval(interval);
+  }, [words.length]);
 
     const scrollTarget = (tid) => {
       const element = document.getElementById(tid);
@@ -160,6 +161,20 @@ const HeroSec = () => {
                 <div  onClick={() => scrollTarget("deal")} className="butt" style={{ display: "inline-block" }}>
                   Check out
                 </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "center", gap: "0.8em", marginTop: "30vh" }}>
+                {words.map((word, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      color: index === activeIndex ? "#DD6410" : "gray",
+                      transition: "color 0.5s ease-in-out",
+                      fontSize: "clamp(2rem, 4vw, 3rem)"
+                    }}
+                  >
+                    {word}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
