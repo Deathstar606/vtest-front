@@ -16,6 +16,17 @@ body {
   height: 100%
 }
 
+.hero_mar {
+  margin-top: 35vh;
+}
+
+@media screen and (max-width: 639px) {
+  .hero_mar {
+    margin-top: 20vh;
+  }
+  
+}
+
 .modal-back {
   position: fixed;
   overflow: hidden;

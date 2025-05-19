@@ -92,7 +92,7 @@ const HeroSec = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 1500); // 1 second per word
+    }, 2000); // 1 second per word
     return () => clearInterval(interval);
   }, [words.length]);
 
@@ -162,14 +162,15 @@ const HeroSec = () => {
                   Check out
                 </div>
               </div>
-              <div style={{ display: "flex", justifyContent: "center", gap: "0.8em", marginTop: "30vh" }}>
+              <div className="hero_mar" style={{ display: "flex", justifyContent: "center", gap: "0.8em" }}>
                 {words.map((word, index) => (
                   <span
                     key={index}
                     style={{
                       color: index === activeIndex ? "#DD6410" : "gray",
                       transition: "color 0.5s ease-in-out",
-                      fontSize: "clamp(2rem, 4vw, 3rem)"
+                      fontSize: "clamp(2rem, 4vw, 3rem)",
+                      fontWeight: "bold",
                     }}
                   >
                     {word}
