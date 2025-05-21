@@ -193,7 +193,7 @@ const Deats = (props) => {
             }
         )
     }; */
-    console.log(`/home/${category}`)
+    
     if (props.isLoading) {
         return (
             <div className="container">

@@ -169,7 +169,7 @@ const HeroSec = () => {
                     style={{
                       color: index === activeIndex ? "#DD6410" : "gray",
                       transition: "color 0.5s ease-in-out",
-                      fontSize: "clamp(2rem, 4vw, 3rem)",
+                      fontSize: "clamp(2.5rem, 4vw, 3rem)",
                       fontWeight: "bold",
                     }}
                   >

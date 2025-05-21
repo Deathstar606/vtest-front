@@ -90,7 +90,7 @@ const Example = (props) => {
                         </li>
                       </RouterLink>
                     <li className="pl-3 pb-1" style={{ color: "rgb(255, 153, 0)" }}>Summer Collection</li>
-                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/supolo">
+                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/summer polo">
                         <li className="pl-4 pb-1">
                           <span className="sub-lable">Summer Polo</span>
                         </li>

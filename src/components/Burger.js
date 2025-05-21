@@ -85,7 +85,7 @@ useEffect(() => {
                           <h5 className='text-center'>Luxury Polo</h5>
                         </Link>
                       <h4 style={{ color: "rgb(255, 153, 0)" }} className='text-center'>Summer Collection</h4>
-                        <Link to="/home/supolo" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
+                        <Link to="/home/summer polo" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
                           <h5 className='text-center'>Summer Polo</h5>
                         </Link>
                     </motion.div>

@@ -6,7 +6,7 @@ import "./card.css";
 import shrits from "../images/category/shirt.PNG";
 import polos from "../images/category/polo.JPG";
 import luxury from "../images/category/luxury.JPG";
-//import summer from "../images/category/summer.jpg";
+import supo from "../images/category/supo.jpg";
 import demo from "../images/kyle-loftus-6TIoPIpMvLc-unsplash.jpg";
 
 const Cats = {
@@ -31,13 +31,13 @@ const Cats = {
     cats: ["Luxury Shirt", "Luxury Polo"],
     links: ["/home/luxury shirt", "/home/luxury polo"]
   },
-/*   primary4: {
+  primary4: {
     name: "Summer",
-    img: summer,
+    img: supo,
     short: "Some short description for Summer wear",
-    cats: ["Summer Polo"],
-    links: ["/home/supolo"]
-  } */
+    cats: ["Summer Polo", "Summer Shirt"],
+    links: ["/home/summer polo", "/home/summer shirt"]
+  }
 };
 
 // SubCat component
