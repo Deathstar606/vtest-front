@@ -287,7 +287,7 @@ const ItemCard = ({ item, onDelete, onBest, onDiscount, category }) => {
       </div>
 
       <p><strong>Ordered:</strong> {item.ordered} Times</p>
-      <p><strong>Price:</strong> ${item.price}</p>
+      <p><strong>Price:</strong> {item.price} TK</p>
       <p><strong>Discount:</strong> {item.discount ? `${item.discount}%` : "No Discount"}</p>
 
       <div className="mb-2">
