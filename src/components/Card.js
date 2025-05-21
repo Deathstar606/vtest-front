@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "swiper/css";
-import "swiper/css/navigation";
-import { baseUrl } from "../Redux/shared/baseurl";
+import "swiper/css/navigation";import { baseUrl } from "../Redux/shared/baseurl";
 import MediaQuery from "react-responsive";
 import "./card.css";
 

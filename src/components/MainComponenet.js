@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch) => ({    //method defination
 
 const ClothId = ({ clothes, addNewOrder, toggleCartPanel }) => {
   const { category, clothId } = useParams();
-
+  console.log(category, clothId);
   const matchedCategory = clothes.find(
     (cat) => cat.category.toLowerCase() === category.toLowerCase()
   );
@@ -154,7 +154,7 @@ const SummerShirt = ({ clothes }) => {
     .flatMap(cloth => cloth.items);
 
   return (
-    <ProdList category="summer polo" products={colthList} />
+    <ProdList category="summer shirt" products={colthList} />
   );
 };
 
