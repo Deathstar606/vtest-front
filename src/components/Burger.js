@@ -88,6 +88,9 @@ useEffect(() => {
                         <Link to="/home/summer polo" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
                           <h5 className='text-center'>Summer Polo</h5>
                         </Link>
+                        <Link to="/home/summer shirt" style={{textDecoration: "none", color: "inherit"}} onClick={toggleMenu}>
+                          <h5 className='text-center'>Summer Shirt</h5>
+                        </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>             

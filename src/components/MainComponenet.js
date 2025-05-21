@@ -148,6 +148,16 @@ const SummerPolo = ({ clothes }) => {
   );
 };
 
+const SummerShirt = ({ clothes }) => {
+  const colthList = clothes
+    .filter(cloth => cloth.category === "summer shirt")
+    .flatMap(cloth => cloth.items);
+
+  return (
+    <ProdList category="summer polo" products={colthList} />
+  );
+};
+
 const Home = ({ clothes }) => (
   <motion.div
     transition={{ duration: 1.2, type: "tween", ease: [0.25, 0.1, 0.25, 1] }}
@@ -208,6 +218,7 @@ const Main = (props) => {
             <Route path="/home/luxury shirt" element={<LuxuryShirt clothes={props.clothes.clothes} />} />
             <Route path="/home/luxury polo" element={<LuxuryPolo clothes={props.clothes.clothes} />} />
             <Route path="/home/summer polo" element={<SummerPolo clothes={props.clothes.clothes} />} />
+            <Route path="/home/summer shirt" element={<SummerShirt clothes={props.clothes.clothes} />} />
             
             <Route path="/home/aboutus" element={<About />} />
             <Route path="/home/orders" element={<Order orders={props.orders.orders} removeExistingOrder={props.removeExistingOrder}/>} />

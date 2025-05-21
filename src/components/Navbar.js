@@ -95,6 +95,11 @@ const Example = (props) => {
                           <span className="sub-lable">Summer Polo</span>
                         </li>
                       </RouterLink>
+                      <RouterLink style={{ textDecoration: "none", color: "inherit" }} to="/home/summer shirt">
+                        <li className="pl-4 pb-1">
+                          <span className="sub-lable">Summer Shirt</span>
+                        </li>
+                      </RouterLink>
                   </ul>
                 </NavItem>
                 <NavItem className='nav-ele'>
