@@ -29,7 +29,6 @@ import { connect } from 'react-redux';
 import { fetchCloth, fetchOrders, fetchProdReq, fetchVouchers, addNewOrder, removeExistingOrder, toggleCartPanel, loginUser, logoutUser } from '../Redux/ActionCreators';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Loading } from './LoadingComponent';
-import List from './ProductList';
 
 const mapStateToProps = (state) => {
   return {
