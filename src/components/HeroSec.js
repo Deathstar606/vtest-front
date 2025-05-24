@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import demo from "../images/demo.mp4"
 
@@ -90,12 +91,14 @@ const HeroSec = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 2000); // 1 second per word
-    return () => clearInterval(interval);
-  }, [words.length]);
+  const location = useLocation();
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % words.length);
+      }, 2000); // 1 second per word
+      return () => clearInterval(interval);
+    }, [words.length]);
 
     const scrollTarget = (tid) => {
       const element = document.getElementById(tid);
@@ -109,7 +112,16 @@ const HeroSec = () => {
           behavior: 'smooth',
         });
       }
-    }  
+    }
+    
+    useEffect(() => {
+      if (location.state?.scrollTo) {
+        // Give the page a little time to render the target element
+        setTimeout(() => {
+          scrollTarget(location.state.scrollTo);
+        }, 300);
+      }
+    }, [location]);
 
     const textArray = [
         "Style",
@@ -160,7 +172,7 @@ const HeroSec = () => {
               Loading video...
             </div>
           )}
-    
+        
           {/* Gradient Overlay */}
           <div
             style={{
@@ -173,7 +185,7 @@ const HeroSec = () => {
               zIndex: -1,
             }}
           />
-    
+
           {/* Content */}
           <div className="hero_layout">
             <div>
@@ -185,7 +197,7 @@ const HeroSec = () => {
                   Check out
                 </div>
               </div>
-              <div className="hero_mar" style={{ display: "flex", justifyContent: "center", gap: "0.8em" }}>
+              <div className="hero_mar" style={{ display: "flex", justifyContent: "center", gap: "0.8em", opacity: 0.8 }}>
                 {words.map((word, index) => (
                   <span
                     key={index}

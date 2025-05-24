@@ -12,7 +12,7 @@ function Fail() {
       setCountdown((prev) => {
         if (prev === 1) {
           clearInterval(timer);
-          navigate("/home");
+          navigate("/home", { state: { scrollTo: "deal" } });
         }
         return prev - 1;
       });
