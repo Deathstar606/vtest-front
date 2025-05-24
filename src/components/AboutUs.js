@@ -2,7 +2,8 @@ import React from "react";
 import aboutPic from "../images/about_real.jpg"
 import { motion } from "framer-motion";
 import { Col, Container, Row, CardImg } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Breadcrumb } from "./BreadCrumb";
+import MediaQuery from "react-responsive";
 
 function About() {
     return (
@@ -12,11 +13,23 @@ function About() {
         initial = {{x: 1000, opacity: 0}}
         animate= {{x: 0, opacity: 1}}
         exit= {{x: -1000, opacity: 0}}>
+            <MediaQuery maxWidth={639}>
+              <Breadcrumb items={[
+                { link: '/home', active: false },
+                { name: <span><strong style={{color: "rgb(255, 153, 0)"}}>About Us</strong></span>, link: '', active: true }
+              ]} />
+            </MediaQuery>
             <Container
-                style={{ minHeight: "100vh" }}
-                className="d-flex align-items-center justify-content-center"
+                style={{ minHeight: "100vh", maxWidth: "88%" }}
+                className="align-items-center justify-content-center"
             >
-                <Row className="w-100 pb-5">
+                <MediaQuery minWidth={640}>
+                  <Breadcrumb items={[
+                    { link: '/home', active: false },
+                    { name: <span><strong style={{color: "rgb(255, 153, 0)"}}>About Us</strong></span>, link: '', active: true }
+                  ]} />
+                </MediaQuery>
+                <Row className="w-100 pb-5 mt-4">
                     <Col md={6} className="d-flex justify-content-center align-items-center">
                         <motion.div
                         className="mb-4"

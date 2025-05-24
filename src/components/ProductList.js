@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Container, Row, Col, Form, FormGroup, Label } from 'reactstrap';
 import { Product } from './Card';
 import { Breadcrumb } from './BreadCrumb';
@@ -27,6 +28,15 @@ const ProductList = (props) => {
     const toggleFilter = () => {
         setIsFilterOpen(!isFilterOpen);
     }
+
+    const location = useLocation();
+    const [endpoint, setEndpoint] = useState('');
+
+    useEffect(() => {
+        const pathSegments = location.pathname.split('/').filter(Boolean);
+        const lastSegment = decodeURIComponent(pathSegments[pathSegments.length - 1]);
+        setEndpoint(lastSegment);
+    }, [location]);
 
     const ref = useRef(null)
     const isInview = useInView(ref)
@@ -79,7 +89,7 @@ const ProductList = (props) => {
                     <div className="row" ref={ref}>
                         <Breadcrumb items={[
                             { link: '/home', active: false },
-                            { name: "", link: '', active: true }
+                            { name: <span><strong style={{color: "rgb(255, 153, 0)"}}>{endpoint}</strong></span>, link: '', active: true }
                         ]} />
                         <MediaQuery maxWidth={639}>
                             <motion.button

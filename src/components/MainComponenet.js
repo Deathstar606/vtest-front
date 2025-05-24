@@ -17,6 +17,7 @@ import Footer from './Footer';
 import Success from './PaymentStats/Success';
 import Fail from './PaymentStats/Fail';
 import Cancle from './PaymentStats/Cancle';
+import Cod from './PaymentStats/Cod';
 
 import ShippingPoly from './Legal Info/ShippingPoly';
 import RefundPoly from './Legal Info/RefundPoly';
@@ -226,6 +227,7 @@ const Main = (props) => {
             <Route path="/home/paystat/:tranId" element={<Success />} />
             <Route path="/home/failure/:tranId" element={<Fail />} />
             <Route path="/home/cancle/:tranId" element={<Cancle />} />
+            <Route path="/home/cod" element={<Cod />} />
 
             <Route path="/home/shipping" element={<ShippingPoly />} />
             <Route path="/home/privacy" element={<PrivacyPoly />} />

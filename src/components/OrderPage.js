@@ -14,6 +14,7 @@ import {
 import { Link } from 'react-router-dom';
 import { Breadcrumb } from './BreadCrumb';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import { baseUrl } from '../Redux/shared/baseurl';
 import { motion, useInView as Fview } from "framer-motion";
 import MediaQuery from 'react-responsive';
@@ -42,7 +43,8 @@ function Order (props) {
 
   const [loading, setLoading] = useState(false);
   const [Vloading, setVLoading] = useState(false);
-  const [payerror, setPayerror] = useState("");
+
+  const navigate = useNavigate();
 
   const finalTotal = total - discount;
 
@@ -198,7 +200,7 @@ function Order (props) {
         if (paymentMethod !== "cod") {
           window.open(response.data.url);
         } else {
-          alert("Order placed successfully with Cash on Delivery.");
+          navigate("/home/cod");
         }
       } catch (error) {
         if (error.response) {
@@ -226,14 +228,14 @@ function Order (props) {
             <MediaQuery maxWidth={639}>
               <Breadcrumb items={[
                 { link: '/home', active: false },
-                { name: "", link: '', active: true }
+                { name: <span><strong style={{color: "rgb(255, 153, 0)"}}>Checkout</strong></span>, link: '', active: true }
               ]} />
             </MediaQuery>
             <Container style={{maxWidth: "88%"}}>
               <MediaQuery minWidth={640}>
                   <Breadcrumb items={[
                     { link: '/home', active: false },
-                    { name: "", link: '', active: true }
+                    { name: <span><strong style={{color: "rgb(255, 153, 0)"}}>Checkout</strong></span>, link: '', active: true }
                   ]} />
               </MediaQuery>
             <Container className="text-center mt-5 mb-4">
@@ -368,9 +370,9 @@ function Order (props) {
                               position: "absolute",
                               bottom: "10px",
                               right: "10px",
-                              color: "grey",
+                              color: "black",
                               padding: "5px 10px",
-                              fontSize: "12px"
+                              fontSize: "14px"
                             }}
                           >
                             Selected
@@ -396,9 +398,9 @@ function Order (props) {
                               position: "absolute",
                               bottom: "10px",
                               right: "10px",
-                              color: "grey",
+                              color: "black",
                               padding: "5px 10px",
-                              fontSize: "12px"
+                              fontSize: "14px"
                             }}
                           >
                             Selected
@@ -486,7 +488,7 @@ function Order (props) {
                     )}
                   </div>
                   <div className="d-flex flex-wrap align-items-center">
-                    <FormGroup check className="mr-2">
+                    <FormGroup check className="mr-3">
                       <Label check>
                         <Input
                           type="radio"
@@ -495,10 +497,10 @@ function Order (props) {
                           checked={paymentMethod === 'cod'}
                           onChange={handlePaymentChange}
                         />
-                          Cash on Delivery
+                          <strong>Cash on Delivery</strong>
                       </Label>
                     </FormGroup>
-                    <FormGroup check className="mr-2">
+                    <FormGroup check className="mr-3">
                       <Label check>
                         <Input
                           type="radio"
@@ -507,7 +509,7 @@ function Order (props) {
                           checked={paymentMethod === 'online'}
                           onChange={handlePaymentChange}
                         />
-                        Online Payment
+                        <strong>Online Payment</strong>
                       </Label>
                     </FormGroup>
                     <FormGroup check>
@@ -519,7 +521,7 @@ function Order (props) {
                           checked={paymentMethod === 'partialcod'}
                           onChange={handlePaymentChange}
                         />
-                        Partial Payment
+                        <strong>Partial Payment</strong>
                       </Label>
                     </FormGroup>
                   </div>

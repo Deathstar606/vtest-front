@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 import './details.css'
+import { FaPhone, FaWhatsapp } from 'react-icons/fa6';
 
 /* function RenderRev ({reviews}) {
     return (
@@ -230,7 +231,7 @@ const Deats = (props) => {
                         items={[
                         { name: 'Home', link: '/home', active: false },
                         { name: category, link: `/home/${encodeURIComponent(category)}`, active: false },
-                        { name: props.deats.name, link: '', active: true }
+                        { name: <span style={{color: "rgb(255, 153, 0)"}}><strong>{props.deats.name}</strong></span>, link: '', active: true }
                         ]}
                     />
                     </Row>
@@ -238,10 +239,19 @@ const Deats = (props) => {
                 <Row /* className='d-flex justify-content-center' */>
                     <MediaQuery minWidth={640}>
                         <Col md={2}>
-                            <Breadcrumb items={[
+                            <Breadcrumb 
+                                items={[
                                 { name: 'Home', link: '/home', active: false },
                                 { name: category, link: `/home/${category}`, active: false },
-                                { name: props.deats.name, link: '', active: true }
+                                {
+                                name: (
+                                    <span style={{ color: "rgb(255, 153, 0)", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'inline-block', maxWidth: 150 }}>
+                                        <strong>{props.deats.name}</strong>
+                                    </span>
+                                ),
+                                link: '',
+                                active: true,
+                                }
                             ]} />
                         </Col>
                         <Col md={2} className="mx-0" style={{ height: '80vh', display: "flex", justifyContent: "end"}}>
@@ -343,7 +353,15 @@ const Deats = (props) => {
                                 </>
                             )}
                             <div className="mt-3 w-100">
-                                <button onClick={handleSubmit} className='butt'>Bag it<span className='ml-1' style={{color: "rgb(255, 153, 0)"}}>!!</span></button>
+                                <button onClick={handleSubmit} className='butt'><strong>Buy Now<span className='ml-1' style={{color: "rgb(255, 153, 0)"}}>!!</span></strong></button>
+                            </div>
+                            <div className='d-flex mt-3'>
+                                <a href='https://wa.me/8801629743377' target='_blank' rel='noopener noreferrer'>
+                                    <FaWhatsapp className='mr-2' color='green' size={30} />
+                                </a>
+                                <a href='tel:01629743377'>
+                                    <FaPhone color='black' size={25} />
+                                </a>
                             </div>
                         </div>
                     </Col>
