@@ -26,18 +26,15 @@ const VelouraCol = () => {
             className="mb-4 d-flex justify-content-center align-items-center"
             style={{ height: "100%" }}
           >
-            <motion.div 
-              style={{ textAlign: "center", color: "white", fontSize: "clamp(20px, 2.5vw, 28px)" }}
-              initial={{ opacity: 0, y: 500 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{delay: 2, duration: 1, type: "tween", ease: "easeIn",}}>
+            <div 
+              style={{ textAlign: "center", color: "white", fontSize: "clamp(20px, 2.5vw, 28px)" }}>
                 <h1 className='p-2'>Veloura Collection</h1>
                 <p>
-                Elevate Your Everyday Look
-                Discover the perfect blend of style and functionality with our Veloura Collection. From timeless classics to bold modern frames, each piece is designed to fit comfortably and express your unique personality.
-                Wear your story with confidence.
+                  Elevate Your Everyday Look
+                  Discover the perfect blend of style and functionality with our Veloura Collection. From timeless classics to bold modern frames, each piece is designed to fit comfortably and express your unique personality.
+                  Wear your story with confidence.
                 </p>
-            </motion.div>
+            </div>
           </Col>
         </Row>
       </Container>
