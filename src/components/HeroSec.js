@@ -88,6 +88,7 @@ const HeroSec = () => {
   const text = "Wear Your Story...";
   const words = text.split(" ");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -124,6 +125,7 @@ const HeroSec = () => {
             muted
             loop
             playsInline
+            onCanPlayThrough={() => setVideoLoaded(true)} // detect when video can play
             style={{
               position: "absolute",
               top: 0,
@@ -137,6 +139,27 @@ const HeroSec = () => {
             <source src={demo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+
+          {!videoLoaded && (
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "#000", // fallback background
+                color: "#fff",
+                zIndex: -2,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "1.5rem",
+              }}
+            >
+              Loading video...
+            </div>
+          )}
     
           {/* Gradient Overlay */}
           <div

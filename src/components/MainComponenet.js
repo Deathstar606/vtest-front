@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import HeroSec from './HeroSec';
 import BestD from "./BestDeals";
 import VelouraCol from './VelouraCol';
