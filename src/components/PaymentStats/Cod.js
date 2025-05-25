@@ -4,7 +4,7 @@ import { StaggeredText } from "../Animations";
 
 function Cod() {
   const navigate = useNavigate();
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(10);
 
   useEffect(() => {
           window.scrollTo(0, 0);
@@ -19,7 +19,7 @@ function Cod() {
         }
         return prev - 1;
       });
-    }, 1800);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, [navigate]);
@@ -31,6 +31,9 @@ function Cod() {
           <StaggeredText text={"Cash On Delivery Has Been Accepted"} />
         </h1>
         <p>Thank you for your order. Your request for cash on delivery has been accepted.</p>
+        <p>You will receive a confirmation email shortly.</p>
+        <p>If you haven't received an email please check your spam</p>
+        <p>Please <strong>DO NOT</strong> close this page and let the redirection complete itself</p>
         <p className="mt-5 text-sm text-gray-500">Redirecting to home in {countdown}...</p>
       </div>
     </div>

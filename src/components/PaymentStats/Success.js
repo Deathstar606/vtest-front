@@ -5,7 +5,7 @@ import { StaggeredText } from "../Animations";
 function Success() {
   const { tranId } = useParams();
   const navigate = useNavigate();
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(10);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -16,7 +16,7 @@ function Success() {
         }
         return prev - 1;
       });
-    }, 1800);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, [navigate]);
@@ -30,6 +30,8 @@ function Success() {
         <p>Transaction Id: {tranId}</p>
         <p>Thank you for your order. Your payment has been processed successfully.</p>
         <p>You will receive a confirmation email shortly.</p>
+        <p>If you haven't received an email please check your spam</p>
+        <p>Please <strong>DO NOT</strong> close this page and let the redirection complete itself</p>
         <p className="mt-5 text-sm text-gray-500">Redirecting to home in {countdown}...</p>
       </div>
     </div>
