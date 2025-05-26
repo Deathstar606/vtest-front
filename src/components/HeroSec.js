@@ -197,7 +197,7 @@ const HeroSec = () => {
                   Check out
                 </div>
               </div>
-              <div className="hero_mar" style={{ display: "flex", justifyContent: "center", gap: "0.8em", opacity: 0.8 }}>
+              <div className="hero_mar" style={{ display: "flex", justifyContent: "center", gap: "0.8em", opacity: 0.7 }}>
                 {words.map((word, index) => (
                   <span
                     key={index}
