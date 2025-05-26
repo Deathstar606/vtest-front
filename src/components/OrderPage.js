@@ -360,6 +360,8 @@ function Order (props) {
                         className='text-center mt-4'
                         onClick={() => handlezone('inside')}
                         style={{
+                          backgroundColor: deliveryZone === 'inside' ? '#ff9900' : 'transparent',
+                          color: 'black',
                           border: "1px solid black",
                           padding: "40px",
                           position: "relative",
@@ -381,13 +383,15 @@ function Order (props) {
                             Selected
                           </div>
                         )}
-                        <p className='text-center pt-1 text-muted'>Delivery Time within 24hrs</p>
+                        <p className='text-center'>Delivery Time within 24hrs</p>
                       </div>
 
                       <div
-                        className='text-center mt-2'
+                        className='text-center mt-3'
                         onClick={() => handlezone('outside')}
                         style={{
+                          backgroundColor: deliveryZone === 'outside' ? '#ff9900' : 'transparent',
+                          color: 'black',
                           border: "1px solid black",
                           padding: "40px",
                           position: "relative",
@@ -409,7 +413,7 @@ function Order (props) {
                             Selected
                           </div>
                         )}
-                        <p className='text-center pt-1 text-muted'>Delivery Time 24-48hrs</p>
+                        <p className='text-center'>Delivery Time 24-48hrs</p>
                       </div>
                     </div>
                   </Col>
