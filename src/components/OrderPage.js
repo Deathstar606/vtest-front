@@ -129,7 +129,6 @@ function Order (props) {
       setVLoading(true);
       try {
         const response = await axios.post(`${baseUrl}voucher`, { name: voucher });
-        console.log(response)
         const value = response.data.value; // Assuming 'value' is a percentage like 10
   
         setDiscount((total * value) / 100);
@@ -155,6 +154,10 @@ function Order (props) {
         ...formData,
         order_stat: paymentMethod
       };
+
+      if (paymentMethod === "online") {
+        orderToSubmit.total = (finalTotal + deliveryFee) * 0.95; // Apply 5% discount for online payment
+      }
     
       // Validation
       if (formData.firstName === "") {
@@ -472,7 +475,11 @@ function Order (props) {
                     </FormGroup>
                     <h5 className='pb-2'>Delivery Fee: {deliveryFee}TK</h5>
                     <h4>
-                      <strong>Total:</strong> {(finalTotal + deliveryFee).toFixed(2)} Tk
+                      <strong>Total:</strong>{' '}
+                      {paymentMethod === 'online'
+                        ? ((finalTotal + deliveryFee) * 0.95).toFixed(2)
+                        : (finalTotal + deliveryFee).toFixed(2)}{' '}
+                      Tk {paymentMethod === 'online' && <span>(with online payment)</span>}
                     </h4>
 
                     {voucherApplied && (
