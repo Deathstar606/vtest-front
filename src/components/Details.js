@@ -356,7 +356,7 @@ const Deats = (props) => {
                                 <button onClick={handleSubmit} className='butt'><strong>Buy Now<span className='ml-1' style={{color: "rgb(255, 153, 0)"}}>!!</span></strong></button>
                             </div>
                             <div className='d-flex mt-3'>
-                                <a href='https://wa.me/8801629743377' target='_blank' rel='noopener noreferrer'>
+                                <a href='https://wa.me/+8801924223600' target='_blank' rel='noopener noreferrer'>
                                     <FaWhatsapp className='mr-2' color='green' size={30} />
                                 </a>
                                 <a href='tel:01629743377'>
