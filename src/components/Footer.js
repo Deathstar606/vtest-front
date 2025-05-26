@@ -146,7 +146,9 @@ function Footer() {
       </Container>
     </div>
     <div className='w-100 text-white text-center py-3' style={{backgroundColor: "black"}}>
-      All rights Reserved Veloura
+      <div>All rights Reserved Veloura © 2025</div>
+      <div className="small text-muted mt-3">Developed By Fardin Rahman</div>
+      <div className="small text-muted">Northern University of Business & Texhnology Khulna</div>
     </div>
     </>
   );

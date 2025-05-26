@@ -13,28 +13,28 @@ const Cats = {
   primary: {
     name: "Shirt",
     img: shrits,
-    short: "Some short description for Shirt",
+    short: "Shirts for every occasion",
     cats: ["Half Sleve", "Full Sleve"],
     links: ["/home/shirt", "/home/full shirt"]
   },
   primary2: {
     name: "Polo",
     img: polos,
-    short: "Some short description for Polo",
+    short: "Polos for a casual look",
     cats: ["Polo Shirt"],
     links: ["/home/polo"]
   },
   primary3: {
     name: "Luxury",
     img: luxury,
-    short: "Some short description for Luxury Wear",
+    short: "Luxury wear for special occasions",
     cats: ["Luxury Shirt", "Luxury Polo"],
     links: ["/home/luxury shirt", "/home/luxury polo"]
   },
   primary4: {
     name: "Summer",
     img: supo,
-    short: "Some short description for Summer wear",
+    short: "Summer collection for a cool vibe",
     cats: ["Summer Polo", "Summer Shirt"],
     links: ["/home/summer polo", "/home/summer shirt"]
   }

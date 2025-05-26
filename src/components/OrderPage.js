@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { baseUrl } from '../Redux/shared/baseurl';
 import { motion, useInView as Fview } from "framer-motion";
 import MediaQuery from 'react-responsive';
-import pp from "../images/sslcom.png"
+import pp from "../images/Pay logo/1 (1).png"
 
 const steps = [
   { number: 1, label: 'Cart' },
@@ -479,7 +479,7 @@ function Order (props) {
                       {paymentMethod === 'online'
                         ? ((finalTotal + deliveryFee) * 0.95).toFixed(2)
                         : (finalTotal + deliveryFee).toFixed(2)}{' '}
-                      Tk {paymentMethod === 'online' && <span>(with online payment)</span>}
+                      Tk {paymentMethod === 'online' && <div>(with online payment)</div>}
                     </h4>
 
                     {voucherApplied && (
@@ -495,7 +495,7 @@ function Order (props) {
                     )}
                   </div>
                   <div className="d-flex flex-wrap align-items-center">
-                    <FormGroup check className="mr-3">
+                    <FormGroup check className="mr-3 mt-1">
                       <Label check>
                         <Input
                           type="radio"
@@ -507,7 +507,7 @@ function Order (props) {
                           <strong>Cash on Delivery</strong>
                       </Label>
                     </FormGroup>
-                    <FormGroup check className="mr-3">
+                    <FormGroup check className="mr-3 mt-1">
                       <Label check>
                         <Input
                           type="radio"
@@ -519,7 +519,7 @@ function Order (props) {
                         <strong>Online Payment</strong>
                       </Label>
                     </FormGroup>
-                    <FormGroup check>
+                    <FormGroup check className='mt-1'>
                       <Label check>
                         <Input
                           type="radio"
@@ -536,7 +536,7 @@ function Order (props) {
                       <p className='pt-2 text-muted'>Make Full payment after product has been delivered</p>
                     )}
                     {paymentMethod == "online" && (
-                      <p className='pt-2 text-muted'>Make the full payment online</p>
+                      <p className='pt-2 text-muted'>Make the full payment online, you get 5% discount</p>
                     )}
                     {paymentMethod == "partialcod" && (
                       <p className='pt-2 text-muted'>Only pay the delivery fee pay product fee after product arrival</p>
