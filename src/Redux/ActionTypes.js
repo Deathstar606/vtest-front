@@ -9,6 +9,7 @@ export const CLOTHES_FAILED = 'CLOTHES_FAILED';
 export const ADD_ORDERS = 'ADD_ORDERS';
 export const ADD_ORDER = 'ADD_ORDER';
 export const ORDERS_FAILED = 'ORDERS_FAILED';
+export const RESET_ORDERS = 'RESET_ORDERS';
 
 export const ADD_PRODREQ = 'ADD_PRODREQ';
 export const PRODREQ_LOADING = 'PRODREQ_LOADING';

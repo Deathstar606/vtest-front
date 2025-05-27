@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StaggeredText } from "../Animations";
 
-function Cod() {
+function Cod(props) {
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState(10);
 
   useEffect(() => {
-          window.scrollTo(0, 0);
+    props.resetOrders();
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ function Cod() {
         }
         return prev - 1;
       });
-    }, 2000);
+    }, 1500);
 
     return () => clearInterval(timer);
   }, [navigate]);

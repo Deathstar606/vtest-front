@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { StaggeredText } from "../Animations";
 
-function Success() {
+function Success(props) {
   const { tranId } = useParams();
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState(10);
 
   useEffect(() => {
+    props.resetOrders();
+  }, []);
+
+  useEffect(() => {
+    props.resetOrders();
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev === 1) {
@@ -16,7 +21,7 @@ function Success() {
         }
         return prev - 1;
       });
-    }, 2000);
+    }, 1500);
 
     return () => clearInterval(timer);
   }, [navigate]);

@@ -12,6 +12,9 @@ export const Orders = (state = { errMess: null, orders: [] }, action) => {
       var order = action.payload;
       return { ...state, orders: state.orders.concat(order) };
 
+    case ActionTypes.RESET_ORDERS:
+      return { ...state, orders: [] };
+
     default:
       return state;
   }

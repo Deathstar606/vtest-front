@@ -123,6 +123,15 @@ export const removeExistingOrder = (order_id) => (dispatch) => {
     }
 };
 
+export const resetOrders = () => (dispatch) => {
+  try {
+    localStorage.setItem('Velorders', JSON.stringify([])); 
+    dispatch({ type: ActionTypes.RESET_ORDERS }); 
+  } catch (error) {
+    dispatch(orderFailed(error.message)); 
+  }
+};
+
 export const fetchVouchers = () => (dispatch) => {
     dispatch(voucherLoading(true));
     const token = localStorage.getItem("token"); // Retrieve token from localStorage

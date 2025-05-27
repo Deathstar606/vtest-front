@@ -27,7 +27,7 @@ import TermsConditions from './Legal Info/Terms&Condition';
 
 import { Link, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchCloth, fetchOrders, fetchProdReq, fetchVouchers, addNewOrder, removeExistingOrder, toggleCartPanel, loginUser, logoutUser } from '../Redux/ActionCreators';
+import { fetchCloth, fetchOrders, fetchProdReq, fetchVouchers, addNewOrder, removeExistingOrder,  resetOrders, toggleCartPanel, loginUser, logoutUser } from '../Redux/ActionCreators';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Loading } from './LoadingComponent';
 
@@ -53,6 +53,7 @@ const mapDispatchToProps = (dispatch) => ({    //method defination
   fetchVouchers: () => {dispatch(fetchVouchers())},
   addNewOrder: (order) => {dispatch(addNewOrder(order))},
   removeExistingOrder: (order_id) => {dispatch(removeExistingOrder(order_id))},
+  resetOrders: () => {dispatch(resetOrders())},
   toggleCartPanel: () => {dispatch(toggleCartPanel())},
   //toggleCartPanel: toggleCartPanel,
   loginUser: (creds) => {dispatch(loginUser(creds))},
@@ -224,10 +225,10 @@ const Main = (props) => {
             <Route path="/home/orders" element={<Order orders={props.orders.orders} removeExistingOrder={props.removeExistingOrder}/>} />
             <Route path="/home/admin" element={<AdminPanel auth={props.auth} clothes={props.clothes.clothes} prodreq={props.prodreq.prodreq} vouchers={props.vouchers.vouchers} loginUser={props.loginUser} logoutUser={props.logoutUser}/>} />
 
-            <Route path="/home/paystat/:tranId" element={<Success />} />
+            <Route path="/home/paystat/:tranId" element={<Success resetOrders={props.resetOrders}/>} />
             <Route path="/home/failure/:tranId" element={<Fail />} />
             <Route path="/home/cancle/:tranId" element={<Cancle />} />
-            <Route path="/home/cod" element={<Cod />} />
+            <Route path="/home/cod" element={<Cod resetOrders={props.resetOrders}/>} />
 
             <Route path="/home/shipping" element={<ShippingPoly />} />
             <Route path="/home/privacy" element={<PrivacyPoly />} />

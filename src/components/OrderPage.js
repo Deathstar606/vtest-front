@@ -27,7 +27,6 @@ const steps = [
 ];
 
 function Order (props) {
-  console.log(props)
   const [total, setTotal] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState('online');
 
