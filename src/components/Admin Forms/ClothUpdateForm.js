@@ -10,7 +10,7 @@ import {
 import axios from 'axios';
 import { baseUrl } from '../../Redux/shared/baseurl';
 
-const sizes = ['XS', 'S', 'M', 'L', 'XL'];
+const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', '4XL', '5XL', '6XL'];
 
 const uploadToCloudinary = async (file, clothName) => {
   const formData = new FormData();

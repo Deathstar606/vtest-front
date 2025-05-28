@@ -383,7 +383,7 @@ const Deats = (props) => {
                         <Col md={6}>
                             <h4 className='pt-4'>Description</h4>
                             <p className='pb-4'>{props.deats.description}</p>
-                            <motion.div 
+{/*                             <motion.div 
                                 className="d-flex justify-content-center"
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -432,7 +432,7 @@ const Deats = (props) => {
                                         </tbody>
                                     </table>
                                 </div>
-                            </motion.div>
+                            </motion.div> */}
                         </Col>
 {/*                         <Col md={6}>
                             
