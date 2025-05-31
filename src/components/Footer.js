@@ -147,8 +147,18 @@ function Footer() {
     </div>
     <div className='w-100 text-white text-center py-3' style={{backgroundColor: "black"}}>
       <div>All rights Reserved Veloura © 2025</div>
-      <div className="small text-muted mt-3">Developed By Fardin Rahman</div>
-      <div className="small text-muted">Northern University of Business & Texhnology Khulna</div>
+      <div className="small text-muted mt-2">
+        Developed By{" "}
+        <a
+          href="https://www.linkedin.com/in/fardin-rahman-2311942bb/" // <-- replace with your actual LinkedIn URL
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-decoration-none text-primary"
+        >
+          Fardin Rahman
+        </a>
+      </div>
+{/*       <div className="small text-muted">Northern University of Business & Texhnology Khulna</div> */}
     </div>
     </>
   );

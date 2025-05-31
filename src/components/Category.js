@@ -7,7 +7,6 @@ import shrits from "../images/category/shirt.PNG";
 import polos from "../images/category/polo.JPG";
 import luxury from "../images/category/luxury.JPG";
 import supo from "../images/category/supo.jpg";
-import demo from "../images/kyle-loftus-6TIoPIpMvLc-unsplash.jpg";
 
 const Cats = {
   primary: {
@@ -98,7 +97,7 @@ function Category() {
           <Col md={6} className="py-2" key={index}>
             <div className="catcard">
               <div style={{ cursor: "pointer" }} onClick={() => handleSubCat(cat.cats, cat.links)}>
-                <CardImg className="catimg" src={cat.img || demo} />
+                <CardImg className="catimg" src={cat.img} />
                 <div className="cat-body">
                   <h4
                     className="text-white"

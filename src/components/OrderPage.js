@@ -382,7 +382,7 @@ function Order (props) {
                             Selected
                           </div>
                         )}
-                        <p className='text-center'>Delivery Time within 24hrs</p>
+                        <p className='text-center'>Delivery Time within 24 Hours</p>
                       </div>
 
                       <div
@@ -412,7 +412,7 @@ function Order (props) {
                             Selected
                           </div>
                         )}
-                        <p className='text-center'>Delivery Time 24-48hrs</p>
+                        <p className='text-center'>Delivery Time 72 Hours After Processing</p>
                       </div>
                     </div>
                   </Col>
