@@ -196,7 +196,7 @@ const HeroSec = () => {
               </h1> */}
               <div className="d-flex justify-content-center pt-2">
                 <MediaQuery maxWidth={639}>
-                  <div  onClick={() => scrollTarget("deal")} className="butt" style={{ display: "inline-block", border: "2px solid white" }}>
+                  <div  onClick={() => scrollTarget("deal")} className="butt" style={{ display: "inline-block",  backgroundColor: "black", border: "2px solid white" }}>
                     <strong className="text-white">Check out</strong>
                   </div>
                 </MediaQuery>
@@ -212,6 +212,7 @@ const HeroSec = () => {
                     key={index}
                     style={{
                       color: index === activeIndex ? "#DD6410" : "gray",
+                      paddingBottom: "0.4em",
                       transition: "color 0.5s ease-in-out",
                       fontSize: "clamp(2.5rem, 4vw, 3rem)",
                       fontWeight: "bold",
