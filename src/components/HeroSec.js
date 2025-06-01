@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import demo from "../images/demo.mp4"
+import Eidphn from "../images/Eid_banner_phn.jpg"
+import EidDesk from "../images/Eid_banner_desk.jpg"
+import { Media } from "reactstrap";
+import MediaQuery from "react-responsive";
+//import demo from "../images/demo.mp4"
 
 const TextCycle = ({ texts }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -130,9 +134,8 @@ const HeroSec = () => {
       ];
 
       return (
-        <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
-          {/* Video Background */}
-          <video
+        <div className="hero-banner">
+{/*           <video
             autoPlay
             muted
             loop
@@ -172,8 +175,7 @@ const HeroSec = () => {
               Loading video...
             </div>
           )}
-        
-          {/* Gradient Overlay */}
+
           <div
             style={{
               position: "absolute",
@@ -184,18 +186,25 @@ const HeroSec = () => {
               background: "linear-gradient(to top, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 100%)",
               zIndex: -1,
             }}
-          />
+          /> */}
 
           {/* Content */}
           <div className="hero_layout">
             <div>
-              <h1 className="d-flex justify-content-center pl-3">
+{/*               <h1 className="d-flex justify-content-center pl-3">
                 We represent <span className="pl-2"><TextCycle texts={textArray} /></span>
-              </h1>
+              </h1> */}
               <div className="d-flex justify-content-center pt-2">
-                <div  onClick={() => scrollTarget("deal")} className="butt" style={{ display: "inline-block" }}>
-                  Check out
-                </div>
+                <MediaQuery maxWidth={639}>
+                  <div  onClick={() => scrollTarget("deal")} className="butt" style={{ display: "inline-block", border: "2px solid white" }}>
+                    <strong className="text-white">Check out</strong>
+                  </div>
+                </MediaQuery>
+                <MediaQuery minWidth={640}>
+                  <div onClick={() => scrollTarget("deal")} className="butt" style={{ display: "inline-block" }}>
+                    <strong>Check out</strong>
+                  </div>
+                </MediaQuery>
               </div>
               <div className="hero_mar" style={{ display: "flex", justifyContent: "center", gap: "0.8em", opacity: 0.7 }}>
                 {words.map((word, index) => (
