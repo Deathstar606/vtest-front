@@ -29,6 +29,7 @@ body {
 @media screen and (max-width: 639px) {
   .hero-banner {
     background-image: url('../src/images/Eid_banner_phn.jpg');
+    background-size: cover;
     height: auto;
   }
 }
