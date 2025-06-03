@@ -383,56 +383,37 @@ const Deats = (props) => {
                         <Col md={6}>
                             <h4 className='pt-4'>Description</h4>
                             <p className='pb-4'>{props.deats.description}</p>
-{/*                             <motion.div 
-                                className="d-flex justify-content-center"
+                            <motion.div 
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}
                                 viewport={{ once: true }}>
-                                <div className="d-flex align-items-center mb-3 mr-3">
-                                    <div className="me-2">
-                                        <div>Size Guide</div>                                    
-                                    </div>
+                                <div className="text-center mt-4 mb-1">
+                                    <h5 className="fw-bold">Size Chart</h5>
                                 </div>
                                 <div style={{ overflowX: "auto", whiteSpace: "nowrap", scrollbarWidth: "none" }}>
                                     <table className="table table-bordered text-center">
                                         <thead className="table-light">
                                             <tr>
                                                 <th>Measurement Points Inch</th>
-                                                <th>XS</th>
-                                                <th>S</th>
                                                 <th>M</th>
                                                 <th>L</th>
                                                 <th>XL</th>
-                                                <th>2XL</th>
-                                                <th>3XL</th>
+                                                <th>XXL</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1/2 CHEST</td>
-                                                <td>19.75</td>
-                                                <td>20.5</td>
-                                                <td>21.75</td>
-                                                <td>22.75</td>
-                                                <td>24</td>
-                                                <td>25.25</td>
-                                                <td>26.75</td>
-                                            </tr>
-                                            <tr>
-                                                <td>BODY LENGTH</td>
-                                                <td>41.25</td>
+                                                <td>Length Standard (Inch)</td>
+                                                <td>38</td>
+                                                <td>40</td>
                                                 <td>42</td>
-                                                <td>43.25</td>
-                                                <td>46.5</td>
-                                                <td>47.25</td>
-                                                <td>47.25</td>
-                                                <td>47.25</td>
+                                                <td>44</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                            </motion.div> */}
+                            </motion.div>
                         </Col>
 {/*                         <Col md={6}>
                             

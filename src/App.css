@@ -19,7 +19,14 @@ body {
   overflow: hidden;
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 1600px) {
+  .hero-banner {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (max-width: 639px) {
   .hero-banner {
     background-image: url('../src/images/Eid_banner_phn.jpg');
     height: auto;
