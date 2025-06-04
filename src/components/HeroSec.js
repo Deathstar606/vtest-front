@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import Eidphn from "../images/Eid_banner_phn.jpg"
-import EidDesk from "../images/Eid_banner_desk.jpg"
-import { Media } from "reactstrap";
 import MediaQuery from "react-responsive";
 //import demo from "../images/demo.mp4"
 
@@ -212,6 +209,7 @@ const HeroSec = () => {
                     key={index}
                     style={{
                       color: index === activeIndex ? "#DD6410" : "gray",
+                      paddingTop: "0.3em",
                       paddingBottom: "0.4em",
                       transition: "color 0.5s ease-in-out",
                       fontSize: "clamp(2.5rem, 4vw, 3rem)",

@@ -10,7 +10,7 @@ body {
 
 /* Temporary Eid banner */
 .hero-banner {
-  background-image: url('../src/images/Eid_banner_desk.jpg');
+  background-image: url('../src/images/banners/eid_banner_desk2.JPG');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -28,7 +28,7 @@ body {
 
 @media screen and (max-width: 639px) {
   .hero-banner {
-    background-image: url('../src/images/Eid_banner_phn.jpg');
+    background-image: url('../src/images/banners/eid_banner_phn2.JPG');
     background-size: cover;
     height: auto;
   }

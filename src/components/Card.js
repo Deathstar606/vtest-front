@@ -54,7 +54,7 @@ export const Product = ({ category, child }) => {
             <div className="p-2 pt-2 d-flex flex-column text-center flex-grow-1">
                 <div>
                     <h5
-                        className="mb-2 mt-2"
+                        className="mb-3 mt-2"
                         style={{
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
@@ -71,9 +71,9 @@ export const Product = ({ category, child }) => {
                                 className="color-box"
                                 style={{
                                     backgroundColor: col,
-                                    width: '17px',
-                                    height: '17px',
-                                    marginRight: '8px',
+                                    width: '23px',
+                                    height: '23px',
+                                    marginRight: '12px',
                                     marginBottom: "5px",
                                     borderRadius: '50%',
                                     cursor: 'pointer'
