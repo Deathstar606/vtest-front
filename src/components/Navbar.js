@@ -3,7 +3,7 @@ import { Navbar, NavbarBrand, Nav, NavItem, Col, Row, CardImg } from 'reactstrap
 import BurgerMenu from "./Burger"
 import MediaQuery from 'react-responsive';
 import { Link as RouterLink } from 'react-router-dom';
-import logo from "../images/veloura.png"
+import logo from "../images/favicon.ico"
 import { FaGoogle, FaTimes, FaUser, FaShoppingBag } from 'react-icons/fa';
 import { AnimatePresence, motion } from 'framer-motion';
 
