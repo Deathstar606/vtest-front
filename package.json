@@ -2,7 +2,6 @@
     "name": "veloura",
     "version": "0.1.0",
     "private": true,
-    
     "dependencies": {
         "@popperjs/core": "^2.11.6",
         "@testing-library/jest-dom": "^5.16.5",
@@ -10,6 +9,7 @@
         "@testing-library/user-event": "^13.5.0",
         "axios": "^1.6.5",
         "bootstrap": "^4.0.0",
+        "firebase": "^11.10.0",
         "framer-motion": "^10.16.4",
         "gh-pages": "^6.1.1",
         "react": "^18.2.0",

@@ -10,29 +10,24 @@ import {
 import axios from 'axios';
 import { baseUrl } from '../../Redux/shared/baseurl';
 
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from '../../firebase';
+
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', '4XL', '5XL', '6XL'];
 
-const uploadToCloudinary = async (file, clothName) => {
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", "veloura_up"); // Your Cloudinary unsigned upload preset
-  formData.append("folder", `veloura_clothes/${clothName}`);
+export const uploadToFirebaseStorage = async (file, clothName, color) => {
+  if (!file) return null;
+
+  const uniqueFileName = `${Date.now()}_${file.name}`;
+  const filePath = `veloura_clothes/${clothName}/${color}/${uniqueFileName}`;
+  const storageRef = ref(storage, filePath);
 
   try {
-    const response = await fetch("https://api.cloudinary.com/v1_1/dmrazifyy/image/upload", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.secure_url) {
-      return data.secure_url; // Return Cloudinary URL
-    } else {
-      throw new Error("Upload failed");
-    }
+    const snapshot = await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    return downloadURL;
   } catch (error) {
-    console.error("Cloudinary Upload Error:", error);
+    console.error("Firebase Upload Error:", error);
     return null;
   }
 };
@@ -154,7 +149,9 @@ export default function ClothesForm({category}) {
         colorList.push(color);
   
         const uploadPromises = colorBlock.images.map((file) =>
-          typeof file === "string" ? Promise.resolve(file) : uploadToCloudinary(file, formData.name)
+          typeof file === "string"
+            ? Promise.resolve(file)
+            : uploadToFirebaseStorage(file, formData.name, color)
         );
   
         const uploadedUrls = await Promise.all(uploadPromises);
