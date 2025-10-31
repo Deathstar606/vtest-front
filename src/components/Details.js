@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, CardImg, Form, FormGroup, Input, ButtonGroup, Button } from 'reactstrap';
+import { Container, Row, Col, CardImg, ButtonGroup, Button } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { Breadcrumb } from './BreadCrumb';
 import { motion } from 'framer-motion';
@@ -45,15 +45,15 @@ const Deats = (props) => {
     const [rightEye, setRightEye] = useState(""); */
 
     const updateQuantity = (val) => {
-        if (selectedSize === '') {
-            alert("Please select a size first");
-            return    
-        }
+            if (selectedSize === '') {
+                alert("Please select a size first");
+                return    
+            }
 
-        if (!isNaN(val) && val >= 0 && val <= maxQuantity) {
-            setQuantity(val);
+            if (!isNaN(val) && val >= 0 && val <= maxQuantity) {
+                setQuantity(val);
+            }
         }
-    };
 
     const handleOpenFullscreen = (imageUrl) => {
         setFullscreenImage(imageUrl);
@@ -71,7 +71,7 @@ const Deats = (props) => {
         else {
             setQuantity(0);
         }
-    };
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0);

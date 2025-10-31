@@ -48,34 +48,34 @@ function Order (props) {
   const finalTotal = total - discount;
 
   const removeOrder = (orderid) => {
-    setDiscount(0);
-    setVoucherApplied(false)
-    props.removeExistingOrder(orderid)
-  }
+      setDiscount(0);
+      setVoucherApplied(false)
+      props.removeExistingOrder(orderid)
+    }
 
   const handleChangeTerm = (e) => {
     setagreeTerm(!agreeTerm)
   };
 
   const handleVoucherChange = (e) => {
-    setVoucher(e.target.value);
-    setError('');
-    setVoucherApplied(false);
-    setDiscount(0);
-  };
+      setVoucher(e.target.value);
+      setError('');
+      setVoucherApplied(false);
+      setDiscount(0);
+  }
 
   const handlePaymentChange = (e) => {
     setPaymentMethod(e.target.value);
   };
 
   const handlezone = (zone) => {
-    setDeliveryZone(zone);
-    if (zone === "outside") {
-      setDeliveryFee(120);
-    } else if (zone === "inside") {
-      setDeliveryFee(70);
+      setDeliveryZone(zone);
+      if (zone === "outside") {
+        setDeliveryFee(120);
+      } else if (zone === "inside") {
+        setDeliveryFee(70);
+      }
     }
-  };
 
     const [formData, setFormData] = useState({
       firstName: '',
@@ -118,29 +118,29 @@ function Order (props) {
     }, [finalTotal, discount, deliveryFee, props.orders]);
 
     const handleChange = (e) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-      });
-    };
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
+        });
+      }
 
     const submitVoucher = async () => {
       setVLoading(true);
       try {
         const response = await axios.post(`${baseUrl}voucher`, { name: voucher });
         const value = response.data.value; // Assuming 'value' is a percentage like 10
-  
+
         setDiscount((total * value) / 100);
         setVoucherApplied(true);
         setVLoading(false);
-        setError('');
+        setError("");
       } catch (err) {
         setVoucherApplied(false);
         setDiscount(0);
         setVLoading(false);
-        setError('Invalid or expired voucher.');
+        setError("Invalid or expired voucher.");
       }
-    };
+    }
 
     const handleSubmit = async (e) => {
       e.preventDefault(); 
@@ -218,7 +218,7 @@ function Order (props) {
       } finally {
         setLoading(false);
       }
-    };
+    }
 
     return (
       <motion.div

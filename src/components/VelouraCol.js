@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { CardImg, Col, Container, Row } from 'reactstrap';
+import React from 'react';
+import { Col, Container, Row } from 'reactstrap';
 import about from "../images/about.jpg"
-import { motion } from 'framer-motion';
 
 const VelouraCol = () => {
 
