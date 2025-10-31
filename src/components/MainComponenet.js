@@ -61,15 +61,6 @@ const mapDispatchToProps = (dispatch) => ({    //method defination
   logoutUser: () => {dispatch(logoutUser())}
 });
 
-const Spinner = () => {
-  return (
-    <div className="text-center my-5">
-      <div role="status">
-        <span className="visually-hidden">Wait a moment</span>
-      </div>
-    </div>
-  );
-}
 
 const ClothId = memo(({ clothes, addNewOrder, toggleCartPanel }) => {
   const { category, clothId } = useParams();
@@ -83,7 +74,7 @@ const ClothId = memo(({ clothes, addNewOrder, toggleCartPanel }) => {
   );
 
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<Loading />}>
       <motion.div
         transition={{ duration: 0.5, type: "tween", ease: "easeIn" }}
         initial={{ x: 1000, opacity: 0 }}
@@ -108,7 +99,7 @@ const ClothCat = memo(({ clothes, category }) => {
     .flatMap(cloth => cloth.items);
 
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<Loading />}>
       <ProdList category={category} products={colthList} />
     </Suspense>
   );
@@ -116,14 +107,14 @@ const ClothCat = memo(({ clothes, category }) => {
 
 const Admin = ({auth, clothes, prodreq, vouchers, loginUser, logoutUser}) => {
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<Loading />}>
       <AdminPanel auth={auth} clothes={clothes} prodreq={prodreq} vouchers={vouchers} loginUser={loginUser} logoutUser={logoutUser}/>
     </Suspense>
   );
 }
 
 const Home = memo(({ clothes }) => (
-  <Suspense fallback={<Spinner />}>
+  <Suspense fallback={<Loading />}>
     <motion.div
       transition={{ duration: 1.2, type: "tween", ease: [0.25, 0.1, 0.25, 1] }}
       initial={{ x: 1000, opacity: 0 }}
